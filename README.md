@@ -52,7 +52,7 @@ pip install macs2
 
 ## Installation <br>
 ```R
-install.packages("Download path/EAP_1.0.tar.gz",repos = NULL, type = "source")
+install.packages("Download path/PEA_1.0.tar.gz",repos = NULL, type = "source")
 ```
 ## Contents <br>
 #### CMR calling <br>
