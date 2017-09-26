@@ -73,16 +73,16 @@ More details please see [user manual](https://github.com/cma2015/EAP/blob/master
 #### 1.CMR calling <br>
 * 1.1 Read mapping <br>
 ```R
-	input.fq <- "/home/malab14/input.fastq"  
-	RIP.fq <- "/home/malab14/RIP.fastq"  
-	referenceGenome <- "/home/malab14/tair10.fa"  
-	GTF <- "/home/malab14/Arabidopsis.gtf"  
-	input.bam <- readMapping(alignment = "tophat", fq = input.fq,   
-                          refGenome = referenceGenome, paired = F,
-                          bowtie1 = NULL, ... = paste0(" -p 5 –G ", GTF))
-	RIP.bam <- readMapping(alignment = "tophat", fq = RIP.fq,   
-                        refGenome = referenceGenome, paired = F,
-                        bowtie1 = NULL, ... = paste0(" -p 5 –G ", GTF)) 
+input.fq <- "/home/malab14/input.fastq"  
+RIP.fq <- "/home/malab14/RIP.fastq"  
+referenceGenome <- "/home/malab14/tair10.fa"  
+GTF <- "/home/malab14/Arabidopsis.gtf"  
+input.bam <- readMapping(alignment = "tophat", fq = input.fq,   
+                         refGenome = referenceGenome, paired = F,
+                         bowtie1 = NULL, ... = paste0(" -p 5 –G ", GTF))
+RIP.bam <- readMapping(alignment = "tophat", fq = RIP.fq,   
+                       refGenome = referenceGenome, paired = F,
+                       bowtie1 = NULL, ... = paste0(" -p 5 –G ", GTF)) 
 ```
 * 1.2 CMR calling from read-alignment files <br>
 ```R
