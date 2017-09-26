@@ -1,2 +1,2 @@
-# EAP
-An integrated R toolkit for epitranscriptome data analysis in plants
+# PEA
+An integrated R toolkit for plant epitranscriptome analysis
