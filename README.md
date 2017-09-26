@@ -15,7 +15,8 @@ PEA is an integrated R toolkit that aims to facilitate the plant epitranscriptom
 * [snowfall](https://cran.r-project.org/web/packages/snowfall/index.html) (>= 1.84-6.1) <br>
 * [bigmemory](https://cran.r-project.org/web/packages/bigmemory/index.html) (>= 4.5.19) <br>
 * [Rsamtools](http://bioconductor.org/packages/release/bioc/html/Rsamtools.html) (>= 1.28.0) <br>
-* [motifRG](https://www.bioconductor.org/packages/devel/bioc/html/motifRG.html) (>= 1.21.0) <br>
+* [ROCR](http://bioconductor.org/packages/release/bioc/html/ROCR.html) (>= 1.0-7) <br>
+* [pROC](http://bioconductor.org/packages/release/bioc/html/pROC.html) (>= 1.10.0) <br>
 * [devtools](https://cran.r-project.org/web/packages/devtools/index.html) (>= 1.13.3) <br>
 * [rGADEM](https://bioconductor.org/packages/release/bioc/html/rGADEM.html) (>= 2.24.0) <br>
 #### Global software environment <br>
@@ -69,7 +70,7 @@ install.packages("Download path/PEA_1.0.tar.gz",repos = NULL, type = "sourc
 * Functional enrichment analysis of CMR corresponded genes <br>
 ## Quick start <br>
 Here, we showcased the utility of PEA in N6-methyladenosine(m6A) sequence datasets. <br>
-More details can be seen from [user manual](https://github.com/cma2015/EAP/blob/master/EAP.pdf). <br>
+More details can be seen from [user manual](https://github.com/cma2015/EAP/blob/master/PEA.pdf). <br>
 #### 1.CMR calling <br>
 * 1.1 Read mapping <br>
 ```R
@@ -87,8 +88,12 @@ RIP.bam <- readMapping(alignment = "tophat", fq = RIP.fq,
 * 1.2 CMR calling from read-alignment files <br>
 ```R
 ################m6A peak calling through "SlidingWindow"##################  
-cmrMat <- CMRCalling(CMR = "m6A", method = "SlidingWindow",  
-                     IPBAM = RIP.bam, inputBAM = input.bam) 
+################m6A peak calling through "SlidingWindow"##################  
+cmrMat <- CMRCalling(CMR = "m6A", method = "SlidingWindow",  
+                     IPBAM = RIP.bam, inputBAM = input.bam,
+                     refGenome = referenceGenome, 
+                     mappedInput = 17472368, mappedRIP = 20072602) 
+
 ```
 #### 2.Transcriptome-level CMR prediction <br>
 * 2.1 _Arabidopsis_ m6A benchmark dataset construction <br>
