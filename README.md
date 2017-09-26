@@ -28,8 +28,8 @@ PEA is an integrated R toolkit that aims to facilitate the plant epitranscriptom
 #### Dependency installation <br>
 ```R
 ## Install R Dependency
-dependency.packages <- c("randomForst", "seqinr", "stringr", "snowfall", "bigmemory")
-install.pacakages(dependency.packages)
+dependency.packages <- c("randomForest", "seqinr", "stringr", "snowfall", "bigmemory")
+install.pacakage(dependency.packages)
 biocondctor.dependency <- c("rGADEM", "Rsamtools")
 source("https://bioconductor.org/biocLite.R")
 biocLite(biocondctor.dependency)
