@@ -5,7 +5,7 @@
 PEA is an integrated R toolkit that aims to facilitate the plant epitranscriptome analysis. This toolkit generates comprehensive results for CMR (chemical modifications of RNA) calling from epitranscriptome sequencing data, CMR predictions at the transcriptome scale, and CMR annotation (location distribution analysis, motif scanning and discovery, and gene functional enrichment analysis).
 <br>
 ## Version and download <br>
-* [Version 1.0](https://github.com/cma2015/EAP/blob/master/EAP_1.0.tar.gz) -First version released on september, 26th, 2017<br>
+* [Version 1.0](https://github.com/cma2015/EAP/blob/master/EAP_1.0.tar.gz) -First version released on september, 27th, 2017<br>
 ## Depends
 #### R environment <br>
 * [R](https://www.r-project.org/) (>= 3.3.1) <br>
