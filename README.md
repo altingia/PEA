@@ -71,7 +71,7 @@ install.package("Download path/EAP_1.0.tar.gz",repos = NULL, type = "source
 Here, we showcased the utility of PEA in N6-methyladenosine(m6A) sequence datasets. <br>
 More details please see [user manual](https://github.com/cma2015/EAP/blob/master/EAP.pdf). <br>
 #### 1.CMR calling <br>
-* 1.1 Read mapping
+* 1.1 Read mapping <br>
 ```R
 	input.fq <- "/home/malab14/input.fastq"  
 	RIP.fq <- "/home/malab14/RIP.fastq"  
@@ -122,34 +122,39 @@ featureMat <- rbind(posFeatureMat, unlabelFeatureMat)
 ###Setting the psol directory and running the PSOL-based ML classification###  
 PSOLResDic <- "/home/malab14/psol/"  
 psolResults <- PSOL(featureMatrix = featureMat, positives = positives,   
-                    unlabels = unlabels, PSOLResDic = PSOLResDic, cpus = 5) 
-
-####Ten-fold cross-validation and ROC curve analysis.
-cvRes <- cross_validation(featureMat = featureMat,   
-                          positives = rownames(posFeatureMat),  
-                          negatives = rownames(unlabelFeatureMat),  
+                    unlabels = unlabels, PSOLResDic = PSOLResDic, cpus = 5)
+```
+* 2.4 Ten-fold cross-validation and ROC curve analysis <br>
+```
+cvRes <- cross_validation(featureMat = featureMat,   
+                          positives = rownames(posFeatureMat),  
+                          negatives = rownames(unlabelFeatureMat),  
                           cross = 10, cpus = 1)
 ```
 #### 3.CMR annotation <br>
+PEA also provides one-command function “CMRAnnotation” for CMR annotation, including CMR location and enrichment profiling, CMR-related motif scanning and motif discovery, and CMR-related gene function enrichment analysis. The analysis results may provide further insights into spatial and functional associations of CMRs.
 * 3.1 CMR location distribution <br>
 ```R
-GTF <- "/home/malab14/Arabidopsis_tair10.gtf"  
-#####Extract the UTR position information from GTF file and perform CMR location distribution analysis.  
-UTRMat <- getUTR(GTF = GTF)  
-results <- CMRAnnotation(cmrMat = cmrMat, SNR = T, UTRMat = UTRMat)  
+GTF <- "/home/malab14/Arabidopsis_tair10.gtf"  
+#####Extract the UTR position information from GTF file and perform CMR location distribution analysis.  
+UTRMat <- getUTR(GTF = GTF)  
+results <- CMRAnnotation(cmrMat = cmrMat, SNR = T, UTRMat = UTRMat,
+                         annotation = "location")  
 ```
 * 3.2 Motif scanning and discovery <br>
 ```R
-RNAseq <- "/home/malab14/tair10.fa"  
-testSeqs <- extractSeqs(cmrMat = cmrMat, RNAseq = RNAseq)  
-results <- motifScan(sequence = testSeqs, motif = "[AG][AG]AC[ACT]")
-motifs <- motifDetect (sequence = testSeqs)  
+RNAseq <- "/home/malab14/tair10.fa" 
+testSamples <- paste0(peaks[,1], "_", peaks[,2])
+cmrSeq <- extractSeqs(samples = testSamples, RNAseq = RNAseq)  
+## Note: this positions in the cmrMat were transcripomic
+results <- CMRAnnotation(cmrSeq = cmrSeq, annotation = "motifScan")  
+results <- CMRAnnotation(cmrSeq = cmrSeq, annotation = "motifDetect")
 ``` 
 * 3.3 Functional enrichment analysis of CMR corresponded genes <br>
 ```R
-enrichements <- runTopGO(geneID = geneID,   
-                         dataset = "athaliana_eg_gene",  
-                         topNodes = 20) 
+enrichements <- CMRAnnotation(cmrMat= cmrMat, GTF = GTF,
+                              annotation = "GO", topNodes = 20,
+			      dataset = "athaliana_eg_gene") 
 ```
 ## Ask questions
 Please use [PEA/issues](https://github.com/cma2015/PEA/issues) for how to use PEA and reporting bugs.
