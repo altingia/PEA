@@ -49,7 +49,7 @@ sudo apt-get install hisat or sudo apt-get install hisat2
 ```python
 pip install macs2
 ```
-[pip](https://www.saltycrane.com/blog/2010/02/how-install-pip-ubuntu/) <br>
+[pip](https://www.saltycrane.com/blog/2010/02/how-install-pip-ubuntu/)：Install tool for macs2<br>
 
 ## Installation <br>
 ```R
