@@ -1,4 +1,4 @@
-# _PEV:_ An integrated R toolkit for _p_ lant _e_ pitranscriptome _a_ nalysis <br>
+# __PEV:__ An integrated R toolkit for __p__lant __e__pitranscriptome __a__nalysis <br>
 ![](https://halobi.com/wp-content/uploads/2016/08/r_logo.png "R logo")
 ![](https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSvCvZWbl922EJkjahQ5gmTpcvsYr3ujQBpMdyX-YG99vGWfTAmfw "linux logo")
 <br>
