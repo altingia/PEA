@@ -59,7 +59,7 @@ install.packages("Download path/EAP_1.0.tar.gz",repos = NULL, type = "sourc
 * Read mapping <br>
 * CMR calling from read-alignment files <br>
 #### Transcriptome-level CMR prediction <br>
-* Arabidopsis m6A benchmark dataset construction <br>
+* _Arabidopsis_ m6A benchmark dataset construction <br>
 * Feature encoding <br>
 * m6A predictor construction using ML-based PSOL algorithm <br>
 * Ten-fold cross-validation and ROC curve analysis <br>
@@ -69,7 +69,7 @@ install.packages("Download path/EAP_1.0.tar.gz",repos = NULL, type = "sourc
 * Functional enrichment analysis of CMR corresponded genes <br>
 ## Quick start <br>
 Here, we showcased the utility of PEA in N6-methyladenosine(m6A) sequence datasets. <br>
-more details can be seen from user manual[user manual](https://github.com/cma2015/EAP/blob/master/EAP.pdf). <br>
+More details can be seen from [user manual](https://github.com/cma2015/EAP/blob/master/EAP.pdf). <br>
 #### 1.CMR calling <br>
 * 1.1 Read mapping <br>
 ```R
