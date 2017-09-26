@@ -29,7 +29,7 @@ PEA is an integrated R toolkit that aims to facilitate the plant epitranscriptom
 ```R
 ## Install R Dependency
 dependency.packages <- c("randomForest", "seqinr", "stringr", "snowfall", "bigmemory")
-install.pacakage(dependency.packages)
+install.packages(dependency.packages)
 biocondctor.dependency <- c("rGADEM", "Rsamtools")
 source("https://bioconductor.org/biocLite.R")
 biocLite(biocondctor.dependency)
@@ -52,7 +52,7 @@ pip install macs2
 
 ## Installation <br>
 ```R
-install.package("Download path/EAP_1.0.tar.gz",repos = NULL, type = "source")
+install.packages("Download path/EAP_1.0.tar.gz",repos = NULL, type = "source")
 ```
 ## Contents <br>
 #### CMR calling <br>
@@ -69,7 +69,7 @@ install.package("Download path/EAP_1.0.tar.gz",repos = NULL, type = "source
 * Functional enrichment analysis of CMR corresponded genes <br>
 ## Quick start <br>
 Here, we showcased the utility of PEA in N6-methyladenosine(m6A) sequence datasets. <br>
-More details please see [user manual](https://github.com/cma2015/EAP/blob/master/EAP.pdf). <br>
+more details can be seen from user manual[user manual](https://github.com/cma2015/EAP/blob/master/EAP.pdf). <br>
 #### 1.CMR calling <br>
 * 1.1 Read mapping <br>
 ```R
