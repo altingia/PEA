@@ -1,4 +1,4 @@
-# **PEA**: An integrated R toolkit for __p__lant __e__pitranscriptome __a__nalysis </br>
+# **PEA**: An integrated R toolkit for `p`lant `e`pitranscriptome `a`nalysis </br>
 ![](https://halobi.com/wp-content/uploads/2016/08/r_logo.png "R logo")
 ![](https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSvCvZWbl922EJkjahQ5gmTpcvsYr3ujQBpMdyX-YG99vGWfTAmfw "linux logo")
 <br>
