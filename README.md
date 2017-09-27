@@ -15,9 +15,11 @@ PEA is an integrated R toolkit that aims to facilitate the plant epitranscriptom
 * [snowfall](https://cran.r-project.org/web/packages/snowfall/index.html) (>= 1.84-6.1) <br>
 * [bigmemory](https://cran.r-project.org/web/packages/bigmemory/index.html) (>= 4.5.19) <br>
 * [Rsamtools](http://bioconductor.org/packages/release/bioc/html/Rsamtools.html) (>= 1.28.0) <br>
-* [ROCR](http://bioconductor.org/packages/release/bioc/html/ROCR.html) (>= 1.0-7) <br>
-* [pROC](http://bioconductor.org/packages/release/bioc/html/pROC.html) (>= 1.10.0) <br>
+* [ROCR](https://cran.rstudio.com/web/packages/ROCR/index.html) (>= 1.0-7) <br>
+* [pROC](https://cran.rstudio.com/web/packages/pROC/index.html) (>= 1.10.0) <br>
 * [rGADEM](https://bioconductor.org/packages/release/bioc/html/rGADEM.html) (>= 2.24.0) <br>
+* [seqLogo](https://bioconductor.org/packages/release/bioc/html/seqLogo.html) (>= 1.40.0) <br>
+* [ggplot2](https://bioconductor.org/packages/release/bioc/html/ggplot2.html) (>= 2.2.1) <br>
 #### Global software environment <br>
 * [_Tophat/Tophat2:_](http://ccb.jhu.edu/software/tophat/index.shtml) Read mapping <br>
 * [_Bowtie/Bowtie2:_](bowtie-bio.sourceforge.net/) Read mapping <br>
@@ -28,9 +30,9 @@ PEA is an integrated R toolkit that aims to facilitate the plant epitranscriptom
 #### Dependency installation <br>
 ```R
 ## Install R Dependency
-dependency.packages <- c("randomForest", "seqinr", "stringr", "snowfall", "bigmemory")
+dependency.packages <- c("randomForest", "seqinr", "stringr", "snowfall", "bigmemory", "ggplot2", "ROCR", "pROC")
 install.packages(dependency.packages)
-biocondctor.dependency <- c("rGADEM", "Rsamtools")
+biocondctor.dependency <- c("rGADEM", "Rsamtools", "seqLogo")
 source("https://bioconductor.org/biocLite.R")
 biocLite(biocondctor.dependency)
 ```
