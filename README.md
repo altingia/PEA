@@ -17,7 +17,6 @@ PEA is an integrated R toolkit that aims to facilitate the plant epitranscriptom
 * [Rsamtools](http://bioconductor.org/packages/release/bioc/html/Rsamtools.html) (>= 1.28.0) <br>
 * [ROCR](http://bioconductor.org/packages/release/bioc/html/ROCR.html) (>= 1.0-7) <br>
 * [pROC](http://bioconductor.org/packages/release/bioc/html/pROC.html) (>= 1.10.0) <br>
-* [devtools](https://cran.r-project.org/web/packages/devtools/index.html) (>= 1.13.3) <br>
 * [rGADEM](https://bioconductor.org/packages/release/bioc/html/rGADEM.html) (>= 2.24.0) <br>
 #### Global software environment <br>
 * [_Tophat/Tophat2:_](http://ccb.jhu.edu/software/tophat/index.shtml) Read mapping <br>
