@@ -1,6 +1,7 @@
 # **PEA**: An integrated R toolkit for plant epitranscriptome analysis </br>
 ![](https://halobi.com/wp-content/uploads/2016/08/r_logo.png "R logo")
 ![](https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSvCvZWbl922EJkjahQ5gmTpcvsYr3ujQBpMdyX-YG99vGWfTAmfw "linux logo")
+![](https://tctechcrunch2011.files.wordpress.com/2014/06/apple_topic.png?w=220)
 <br>
 PEA is an integrated R toolkit that aims to facilitate the plant epitranscriptome analysis. This toolkit generates comprehensive results for CMR (chemical modifications of RNA) calling from epitranscriptome sequencing data, CMR predictions at the transcriptome scale, and CMR annotation (location distribution analysis, motif scanning and discovery, and gene functional enrichment analysis).
 <br>
