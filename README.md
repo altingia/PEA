@@ -72,7 +72,7 @@ install.packages("Download path/PEA_1.0.tar.gz",repos = NULL, type = "sourc
 * Functional enrichment analysis of CMR corresponded genes <br>
 ## Quick start <br>
 Here, we showcased the utility of PEA in N6-methyladenosine(m6A) sequence datasets. <br>
-More details can be seen from [user manual](https://github.com/cma2015/EAP/blob/master/PEA.pdf). <br>
+More details can be seen from [user manual](https://github.com/cma2015/PEA/blob/master/PEA.pdf). <br>
 #### 1.CMR calling <br>
 * 1.1 Read mapping <br>
 ```R
