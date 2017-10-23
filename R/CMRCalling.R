@@ -262,7 +262,10 @@ SlidingWindow <- function(input, RIP, mappedInput = NULL,
   RIP <- .intervalCov(dzFile = RIP.dz)
   
   if(!all(names(input) == names(RIP))){
-    stop("The chromosomes in the input and RIP are not consistent!")
+    cat("Warnings: The chromosomes in the input and RIP are not consistent!")
+    interNames <- intersect(names(input), names(RIP))
+    input <- input[interNames]
+    RIP <- RIP[interNames]
   }
   
   resList <- vector("list", length = length(RIP))
@@ -318,7 +321,7 @@ SlidingWindow <- function(input, RIP, mappedInput = NULL,
     curSeed <- .findSeed(index = curPeaks$window)
     if(!is.null(dim(curSeed))){
       tmpPeaks <- matrix(NA, nrow = nrow(curSeed), ncol = 3)
-      tmpPeaks[,1] <- i
+      tmpPeaks[,1] <- Chr[i]
       for(j in 1:nrow(curSeed)){
         curSeed1 <- curSeed[j,1]
         curSeed2 <- curSeed[j,2]
