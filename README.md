@@ -138,14 +138,13 @@ Reads mapping using tophat
   reads mapping using tophat with default parameter, the alignment results
     will be saved to the working directory (/host directory of dataset) 
 
->  test.bam <- readMapping(alignment = "tophat", fq = fq, 
+<pre> test.bam <- readMapping(alignment = "tophat", fq = fq, 
                            refGenome = referenceGenome, paired = F)  
-
+</pre> 
 reads mapping using tophat with 2 threads  
-
->  test.bam <- readMapping(alignment = "tophat", fq = fq, 
+<pre> test.bam <- readMapping(alignment = "tophat", fq = fq, 
                            refGenome = referenceGenome, paired = F,  ... = "-p 2")  
-
+</pre> 
    **Note:** other alignment toolkits such as Bowtie, Bowtie 2, TopHat 2, Hisat
    and Hisat can be easily invoked by specifying “alignment” parameter in
    “readMapping” function.
@@ -183,77 +182,66 @@ Peak calling methods implemented in PEA
 ### Peak calling using SlindingWindow
 
   Loading sample data for peak calling  
-
->  input.bam <- system.file("extdata/chr1_input_test.bam", package = "PEA") 
-
->  RIP.bam <- system.file("extdata/chr1_RIP_test.bam", package = "PEA")  
-
->  refGenome <- system.file("extdata/chromosome1.fa", package = "PEA")  
-
->  GTF <- system.file("extdata/chromosome1.gtf", package = "PEA")  
-
+<pre> 
+  input.bam <- system.file("extdata/chr1_input_test.bam", package = "PEA") 
+  RIP.bam <- system.file("extdata/chr1_RIP_test.bam", package = "PEA")  
+  refGenome <- system.file("extdata/chromosome1.fa", package = "PEA")  
+  GTF <- system.file("extdata/chromosome1.gtf", package = "PEA")  
+</pre> 
   Peak calling using sliding window-based method
 
->  cmrMat <- CMRCalling(CMR = "m6A", IPBAM = RIP.bam, inputBAM = input.bam,
-method = "SlidingWindow", mappedInput = 17472,
-mappedRIP = 20072, refGenome = refGenome) 
-
+<pre>  cmrMat <- CMRCalling(CMR = "m6A", IPBAM = RIP.bam, inputBAM = input.bam,
+                            method = "SlidingWindow", mappedInput = 17472,
+                            mappedRIP = 20072, refGenome = refGenome) 
+</pre> 
 Save the results into working directory
 
-> write.table(cmrMat, file = "SlidingWindow_peaks.txt", sep = "\\t",  
-
->             quote = F, row.names = F, col.names = F)  
-
+<pre> write.table(cmrMat, file = "SlidingWindow_peaks.txt", sep = "\\t",  
+            quote = F, row.names = F, col.names = F)  
+</pre> 
 **Note:** parameters "mappedInput" and "mappedRIP" represent the number of reads aligned to reference genome in input and RIP samples, respectively.
 
 ### Peak calling using exomePeak
 
 m6A peak calling using exomePeak  
 
->  cmrMat <- CMRCalling(CMR = "m6A", method = "exomePeak", IPBAM = RIP.bam, 
-inputBAM = input.bam, GTF = GTF)  
-
->  write.table(cmrMat, file = "exomePeak_peaks.txt", sep = "\\t",
-quote = F, row.names = F, col.names = F)  
-
+<pre> cmrMat <- CMRCalling(CMR = "m6A", method = "exomePeak", IPBAM = RIP.bam, 
+                            inputBAM = input.bam, GTF = GTF)  
+write.table(cmrMat, file = "exomePeak_peaks.txt", sep = "\\t",
+                  quote = F, row.names = F, col.names = F)  
+</pre> 
 ### Peak calling using MetPeak
 
 m6A peak calling using MetPeak  
 
->  cmrMat <- CMRCalling(CMR = "m6A", method = "MetPeak", IPBAM = RIP.bam,  
+<pre>   cmrMat <- CMRCalling(CMR = "m6A", method = "MetPeak", IPBAM = RIP.bam,  
+                           inputBAM = input.bam, GTF = GTF)  
 
->                        inputBAM = input.bam, GTF = GTF)  
-
->  write.table(cmrMat, file = "MetPeak_peaks.txt", sep = "\\t",  
-
->              quote = F, row.names = F, col.names = F)  
-
+write.table(cmrMat, file = "MetPeak_peaks.txt", sep = "\\t",  
+            quote = F, row.names = F, col.names = F)  
+</pre> 
 ### Peak calling using MACS2
 
 m6A peak calling using MACS2  
 
->  cmrMat <- CMRCalling(CMR = "m6A", method = "MACS2", IPBAM = RIP.bam,  
-
->                       inputBAM = input.bam, GTF = GTF, ...="--nomodel")  
-
+<pre> cmrMat <- CMRCalling(CMR = "m6A", method = "MACS2", IPBAM = RIP.bam,  
+                      inputBAM = input.bam, GTF = GTF, ...="--nomodel")  
+</pre> 
 **Note:** futher parameters recognized by MACS2 can be specified in "..."
 
->  write.table(cmrMat, file = "MACS2_peaks.txt", sep = "\\t",  
-
+<pre> write.table(cmrMat, file = "MACS2_peaks.txt", sep = "\\t",  
               quote = F, row.names = F, col.names = F)  
-
+</pre> 
 ### Peak calling using BayesPeak
 
 m6A peak calling using BayesPeak  
 
->  cmrMat <- CMRCalling(CMR = "m6A", method = "BayesPeak", IPBAM = RIP.bam,
+<pre>   cmrMat <- CMRCalling(CMR = "m6A", method = "BayesPeak", IPBAM = RIP.bam,
+                             inputBAM = input.bam, GTF = GTF)  
 
-                        inputBAM = input.bam, GTF = GTF)  
-
->  write.table(cmrMat, file = "BayesPeak_peaks.txt", sep = "\\t",  
-
+write.table(cmrMat, file = "BayesPeak_peaks.txt", sep = "\\t",  
               quote = F, row.names = F, col.names = F)  
-
+</pre> 
 CMR prediction
 ==============
 
@@ -264,10 +252,10 @@ Samples organization
 
 Convert genomic position to cDNA position  
 
->  GTF <- system.file("extdata/chromosome1.gtf", package = "PEA")  
+<pre>  GTF <- system.file("extdata/chromosome1.gtf", package = "PEA")  
 
->  peaks <- G2T(bedPos = cmrMat, GTF = GTF)  
-
+peaks <- G2T(bedPos = cmrMat, GTF = GTF)  
+</pre> 
 Searching RRACH motif from cDNA sequence  
 
 >  cDNA <- system.file("extdata/chr1_cdna.fa", package = "PEA")  
@@ -275,12 +263,11 @@ Searching RRACH motif from cDNA sequence
 >  motifPos <- searchMotifPos(sequence = cDNA)  
 
 Find confident positive samples and unlabel samples  
+<pre> posSamples <- findConfidentPosSamples(peaks = peaks, motifPos = motifPos)
 
->  posSamples <- findConfidentPosSamples(peaks = peaks, motifPos = motifPos)
-
->  unlabelSamples <- findUnlabelSamples(cDNAID = posSamples\$cDNAID, motifPos = motifPos,
-    posSamples = posSamples\$positives)  
-
+unlabelSamples <- findUnlabelSamples(cDNAID = posSamples\$cDNAID, motifPos = motifPos,
+                                       posSamples = posSamples\$positives)  
+</pre> 
 Sample vectorization with three feature encoding schemes
 --------------------------------------------------------
 
@@ -291,25 +278,21 @@ Sample vectorization with three feature encoding schemes
    2) and 22 PseDNC-based features.
 
 Extracting flanking sequence of 101-nt centered on m6A or non-m6A
+<pre> 
+positives <- posSamples\$positives  
 
->  positives <- posSamples\$positives  
+posSeq <- extractSeqs(RNAseq = cDNA, samples = positives,  
+                        seqLen = 101)  
 
->  posSeq <- extractSeqs(RNAseq = cDNA, samples = positives,  
-
->                         seqLen = 101)  
-
->  unlabelSeq <- extractSeqs(RNAseq = cDNA, samples = unlabelSamples,   
-
->                             seqLen = 101)  
-
+ unlabelSeq <- extractSeqs(RNAseq = cDNA, samples = unlabelSamples,   
+                             seqLen = 101)  
+</pre> 
    Feature encoding using *binary*, *k-mer* and *PseDNC* encoding schemes  
 
->  posFeatureMat <- featureEncoding(RNAseq = posSeq)  
-
->  unlabelFeatureMat <- featureEncoding(RNAseq = unlabelSeq)  
-
-> featureMat <- rbind(posFeatureMat, unlabelFeatureMat)  
-
+<pre>  posFeatureMat <- featureEncoding(RNAseq = posSeq)  
+ unlabelFeatureMat <- featureEncoding(RNAseq = unlabelSeq)  
+ featureMat <- rbind(posFeatureMat, unlabelFeatureMat)  
+</pre> 
 Construction of a CRM predictor using random forest (RF) and PSOL algorithm
 ---------------------------------------------------------------------------
  <br>
@@ -327,13 +310,11 @@ Creating a directory to save psol results
 >  psolResDic <- "./psol/"  
 
 Starting running PSOL
-
->  psolRes <- PSOL(featureMatrix = featureMat, positives = positives,  
-
->                  unlabels = unlabelSamples, PSOLResDic = psolResDic,  
-
->                  cpus = 1)
-
+<pre> 
+ psolRes <- PSOL(featureMatrix = featureMat, positives = positives,  
+                  unlabels = unlabelSamples, PSOLResDic = psolResDic,  
+                  cpus = 1)
+</pre> 
 Extracting negative samples generated by PSOL
 
 >  negatives <- psolRes\$finalNegatives  
@@ -341,18 +322,14 @@ Extracting negative samples generated by PSOL
 Performing 5-fold cross-validation experiment to evaluate the performance
     of predictor
 
-> cvRes <- cross_validation(featureMat = featureMat, positives = positives,
-
->                           negatives = negatives, cross = 5)
-
+<pre>  cvRes <- cross_validation(featureMat = featureMat, positives = positives,
+                           negatives = negatives, cross = 5)
+</pre> 
 Plotting ROC curves for 5-fold cross-validation
-
-> pdf("cross_validation.pdf", height = 5, width = 5)
-
-> plotROC(cvRes = cvRes)  
-
-> dev.off()
-
+<pre>  pdf("cross_validation.pdf", height = 5, width = 5)
+plotROC(cvRes = cvRes)  
+dev.off()
+</pre> 
 CMR prediction using predictor generated by PSOL
 ------------------------------------------------
 
@@ -363,7 +340,7 @@ Predicting novel candidate m6A modifications
 
 >  predSeq <- system.file("extdata/test_pred.fa", package = "PEA")  
 
->predMat <- predCMR(predSeq, model = psolRes\$model)  
+>  predMat <- predCMR(predSeq, model = psolRes\$model)  
 
 CMR annotation
 ==============
@@ -386,65 +363,51 @@ Loading sample data
 >  cDNA <- system.file("extdata/chr1_cdna.fa", package = "PEA")  
 
 Extract the UTR position from GTF file  
+<pre>   UTRMat <- getUTR(GTF = GTF)  
 
->  UTRMat <- getUTR(GTF = GTF)  
-
->  cmrMat <- CMRCalling(CMR = "m6A", IPBAM = RIP.bam, inputBAM = input.bam, 
-
->                      method = "SlidingWindow", mappedInput = 17472,  
-
->                      mappedRIP = 20072, refGenome = refGenome)  
-
+cmrMat <- CMRCalling(CMR = "m6A", IPBAM = RIP.bam, inputBAM = input.bam, 
+                      method = "SlidingWindow", mappedInput = 17472,  
+                     mappedRIP = 20072, refGenome = refGenome)  
+</pre> 
 Perform CMR location distribution analysis  
+<pre> 
+ pdf("CMR_location.pdf", height = 10, width = 10)
 
-> pdf("CMR_location.pdf", height = 10, width = 10)
-
-> results <- CMRAnnotation(cmrMat = cmrMat, SNR = F, UTRMat = UTRMat,  
-
->                          genomic = T, annotation = "location", GTF = GTF,
-
->                          RNAseq = cDNA) 
-
-> dev.off()
-
+ results <- CMRAnnotation(cmrMat = cmrMat, SNR = F, UTRMat = UTRMat,  
+                          genomic = T, annotation = "location", GTF = GTF,
+                         RNAseq = cDNA) 
+ dev.off()
+</pre> 
 Motif scanning and discovery
 ----------------------------
 
 Search motif  
+<pre> 
+  testSeq <- system.file("extdata/test.fa", package = "PEA")  
 
->  testSeq <- system.file("extdata/test.fa", package = "PEA")  
+  pdf("motifScan.pdf", height = 5, width = 5)  
 
->  pdf("motifScan.pdf", height = 5, width = 5)  
-
->  results.scan <- CMRAnnotation(cmrSeq = testSeq,   
-
->                                annotation = "motifScan")  
-
->  dev.off()  
-
+  results.scan <- CMRAnnotation(cmrSeq = testSeq,   
+                                annotation = "motifScan")  
+  dev.off()  
+</pre> 
 De-novo motif detection  
-
->  pdf("motifDetect.pdf", height = 5, width = 5)  
-
->  results.detect <- CMRAnnotation(cmrSeq = testSeq,   
-
->                                 annotation = "motifDetect")  
-
-> dev.off()  
-
+<pre> 
+  pdf("motifDetect.pdf", height = 5, width = 5)  
+  results.detect <- CMRAnnotation(cmrSeq = testSeq,   
+                                 annotation = "motifDetect")  
+                                  dev.off()  
+</pre> 
 Functional enrichment analysis of CMR corresponded genes
 --------------------------------------------------------
+<pre> 
+  \#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#GO analysis\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#  
 
->  \#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#GO analysis\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#  
-
->  library(topGO)  
-
->  peaks <- G2T(bedPos = cmrMat, GTF = GTF)  
-
->  enrichment <- CMRAnnotation(cmrMat = peaks, GTF = GTF, annotation = "GO",
-
->                              topNodes = 20, dataset = "athaliana_eg_gene")
-
+library(topGO)  
+peaks <- G2T(bedPos = cmrMat, GTF = GTF)  
+enrichment <- CMRAnnotation(cmrMat = peaks, GTF = GTF, annotation = "GO",
+                            topNodes = 20, dataset = "athaliana_eg_gene")
+</pre> 
 Source codes availability
 =========================
 
