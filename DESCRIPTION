@@ -1,0 +1,17 @@
+Package: PEA
+Type: Package
+Title: An integrated R toolkit for plant epitranscriptome analysis.
+Version: 1.1
+Date: 2018-04-05
+Author: Jingjing Zhai, Chuang Ma and Jie Song
+Maintainer: Jingjing Zhai <zhaijingjing603@gmail.com>
+Depends: R (>= 3.2.3), seqinr (>= 3.3-6), stringr (>= 1.2.0), randomForest (>= 4.6-12), bigmemory (>= 4.5.19), Rsamtools (>= 1.22.0), rGADEM (>= 2.18.0), snowfall (>= 1.84-6.1), ggplot2 (>= 2.2.1), seqLogo (>= 1.36.0), pROC (>= 1.5.4), ROCR (>= 1.0-5), exomePeak (>= 2.2.2), MeTPeak (>= 1.0.0), BayesPeak (>= 1.22.0), biomaRt (>= 2.26.1)
+Suggests: cairoDevice, gplots
+Description: PEA is an integrated R toolkit that aims to facilitate plant epitranscriptome data analysis. This toolkit contains a comprehensive set of functions for read mapping, CMR (chemical modifications of RNA) calling from epitranscriptome sequencing data, CMR prediction at the transcriptome scale, and CMR annotation (location distribution analysis, motif scanning and discovery, and gene functional enrichment analysis.)
+LazyData: true
+License: GPL (>= 2)
+URL: http://bioinfo.nwafu.edu.cn/software
+NeedsCompilation: no
+Repository: CRAN
+RoxygenNote: 6.0.1
+Packaged: 2018-03-23 13:15:55 UTC; malab14
