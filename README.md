@@ -61,10 +61,12 @@ Quickly start
 -------------
 
   Once PEA is installed successfully, type the following command to start PEA:  
->  \$ docker run -it -v /host directory of dataset:/home/data malab/pea R 
->  #Supposing that users’ private dataset is located in directory “/home/test”, then change the red colored words above (/host directory of dataset) to host directory (/home/test)
+>  \$ docker run -it -v **/host directory of dataset**:/home/data malab/pea R  
+>  #Supposing that users’ private dataset is located in directory “/home/test”, then change the bold words above (**/host directory of dataset**) to host directory (**/home/test**)
 >  library(PEA)  
 >  setwd("/home/data/")  
+
+**Important:** the directory ("/home/data/") is a virtual directory in PEA Docker image. In order to use private dataset more easily, the parameter “-v” is strongly recommended to mount host directory of dataset to PEA image.  
 
 CMR calling 
 ============
