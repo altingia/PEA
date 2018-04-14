@@ -64,7 +64,7 @@ Docker installation and start
     
     
 
->    \$ sudo dpkg –i /home/docker-ce-<version-XXX>~ubuntu_amd64.deb
+>    \$ sudo dpkg -i /home/docker-ce-<version-XXX>~ubuntu_amd64.deb
 
 >    \$ sudo apt-get install -f
 
@@ -102,7 +102,7 @@ Quickly start
 
   Once PEA is installed successfully, type the following command to start PEA:
 
->  \$ docker run –it malab/pea R
+>  \$ docker run -it malab/pea R
 
 >  library(PEA)
 
