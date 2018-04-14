@@ -37,7 +37,7 @@ Docker installation and start
 
    Once Docker installation is completed, we can run **hello-world** image to verify if Docker is installed correctly. Open terminal in Mac OS X and Linux operating system and open CMD for Windows operating system, then type the following command:
 
->   \# docker run hello-world
+>   \$ docker run hello-world
 
    **Note:** root permission is required for Linux operating system.
 
