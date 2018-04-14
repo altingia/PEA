@@ -331,16 +331,16 @@ References
 ==========
 
   Chen, W.*, et al.* Identifying N6-methyladenosine sites in the Arabidopsis
-   thaliana transcriptome. *Mol Genet Genomics* 2016;291(6):2225-2229.
+   thaliana transcriptome. *Mol Genet Genomics* 2016;291(6):2225-2229.  
    Cui, H., Zhai, J. and Ma, C. miRLocator: machine learning-lased prediction
    of mature microRNAs within plant pre-miRNA sequences. *PLoS One*
-   2015;10(11):e0142753.
+   2015;10(11):e0142753.  
    Ma, C.*, et al.* Machine learning-based differential network analysis: a
-   study of stress-responsive transcriptomes in Arabidopsis. *Plant Cell*  2014;26(2):520-537.
+   study of stress-responsive transcriptomes in Arabidopsis. *Plant Cell*  2014;26(2):520-537.  
    Touw, W.G.*, et al.* Data mining in the life sciences with random forest: a
-   walk in the park or lost in the jungle? *Brief Bioinform* 2013;14(3):315-326.
+   walk in the park or lost in the jungle? *Brief Bioinform* 2013;14(3):315-326.  
    Wang, C.L.*, et al.* PSoL: a positive sample only learning algorithm for
-   finding non-coding RNA genes. *Bioinformatics* 2006;22(21):2590-2596.
+   finding non-coding RNA genes. *Bioinformatics* 2006;22(21):2590-2596.  
    Zhou, Y.*, et al.* SRAMP: prediction of mammalian N6-methyladenosine (m6A)
    sites based on sequence-derived features. *Nucleic Acids Res*
-   2016;44(10):e91.
+   2016;44(10):e91.  
