@@ -7,19 +7,6 @@ An integrated R toolkit for Plant Epitranscriptome Analysis
 
 PEA Manual
 
-Version 1.0
-
-April 12th, 2018
-
-Authors: Jingjing Zhai, Jie Song, Chuang Ma
-
-Contact:
-
-Jingjing Zhai: <zhaijingjing603@gmail.com>
-
-Dr. Chuang Ma: <chuangma2006@gmail.com>
-
-Table of Contents
 
 **Brief introduction:**
 
@@ -57,8 +44,8 @@ Docker installation and start
     version, browse to *pool/stable* and choose *amd64*, *armhf, ppc64el* or
     *s390x*. Download the DEB file for the Docker version you want to install;
 2.  Install Docker, supposing that the DEB file is download into following path:`/home/docker-ce<version-XXX>~ubuntu_amd64.deb`
->    \$ sudo dpkg -i /home/docker-ce-<version-XXX>~ubuntu_amd64.deb
->    \$ sudo apt-get install -f
+<pre>  \$ sudo dpkg -i /home/docker-ce-<version-XXX>~ubuntu_amd64.deb
+<pre>  \$ sudo apt-get install -f
 
  Verify if Docker is installed correctly 
 ----------------------------------------
@@ -68,7 +55,7 @@ Docker installation and start
    operating system and open CMD for Windows operating system, then type the
    following command:
 
->   \# docker run hello-world
+<pre>  \# docker run hello-world
 
    **Note:** root permission is required for Linux operating system.
 
@@ -86,17 +73,17 @@ PEA installation from Docker Hub
 
  Pull PEA from Docker PEA 
 
->  \$ docker pull malab/pea 
+<pre>  \$ docker pull malab/pea 
 
 Quickly start
 -------------
 
   Once PEA is installed successfully, type the following command to start PEA:
 
-> \$ docker run -it -v /host directory of dataset:/home/data malab/pea R
+<pre>  \$ docker run -it -v /host directory of dataset:/home/data malab/pea R
 #Supposing that users’ private dataset is located in the directory “/home/test”, then change the red colored words above (/host directory of dataset) to host directory (/home/test)
-> library(PEA)
-> setwd("/home/data/")
+<pre>  library(PEA)
+<pre>  setwd("/home/data/")
 
    **Important:** the directory ("/home/data/") is virtual directory in PEA
    Docker image. In order to use private dataset more easily, the parameter
@@ -112,20 +99,17 @@ Reads mapping using tophat
 
   Loading sample data for reads mapping  
 
->  fq <-  system.file("extdata/test.fq", package = "PEA")  
-
->  referenceGenome <- system.file("extdata/chromosome1.fa", package = "PEA")
+<pre>  fq <-  system.file("extdata/test.fq", package = "PEA")  
+<pre>  referenceGenome <- system.file("extdata/chromosome1.fa", package = "PEA")
 
   reads mapping using tophat with default parameter, the alignment results
     will be saved to the working directory (/host directory of dataset) 
 
-<pre> test.bam <- readMapping(alignment = "tophat", fq = fq, 
-                           refGenome = referenceGenome, paired = F)  
-</pre> 
+<pre> test.bam <- readMapping(alignment = "tophat", fq = fq, refGenome = referenceGenome, paired = F)  
+
 reads mapping using tophat with 2 threads  
-<pre> test.bam <- readMapping(alignment = "tophat", fq = fq, 
-                           refGenome = referenceGenome, paired = F,  ... = "-p 2")  
-</pre> 
+<pre> test.bam <- readMapping(alignment = "tophat", fq = fq, refGenome = referenceGenome, paired = F,  ... = "-p 2")  
+
    **Note:** other alignment toolkits such as Bowtie, Bowtie 2, TopHat 2, Hisat
    and Hisat can be easily invoked by specifying “alignment” parameter in
    “readMapping” function.
