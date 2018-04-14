@@ -22,7 +22,7 @@ PEA is a docker-based integrated R toolkit that aims to facilitate the plant epi
 #### For Ubuntu (Test on Ubuntu 14.04 LTS and Ubuntu 16.04 LTS): ####
 * Go to <https://download.docker.com/linux/ubuntu/dists/>, choose your Ubuntuversion, browse to *pool/stable* and choose *amd64*, *armhf, ppc64el* or *s390x*. Download the DEB file for the Docker version you want to install;
 * Install Docker, supposing that the DEB file is download into following path:___`/home/docker-ce<version-XXX>~ubuntu_amd64.deb`___ </br>
-```shell
+```bash
 sudo dpkg -i `/home/docker-ce<version-XXX>~ubuntu_amd64.deb`      
 sudo apt-get install -f
 ```
