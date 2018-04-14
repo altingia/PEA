@@ -136,24 +136,23 @@ Peak calling methods implemented in PEA
 
 ### Peak calling using exomePeak
 
--  m6A peak calling using exomePeak  
 >  cmrMat <- CMRCalling(CMR = "m6A", method = "exomePeak", IPBAM = RIP.bam, inputBAM = input.bam, GTF = GTF)  
 >  write.table(cmrMat, file = "exomePeak_peaks.txt", sep = "\\t", quote = F, row.names = F, col.names = F)  
 
-### Peak calling using MetPeak
-
--  m6A peak calling using MetPeak  
+### Peak calling using MeTPeak
+ 
 >  cmrMat <- CMRCalling(CMR = "m6A", method = "MetPeak", IPBAM = RIP.bam,  inputBAM = input.bam, GTF = GTF)  
 >  write.table(cmrMat, file = "MetPeak_peaks.txt", sep = "\\t",quote = F, row.names = F, col.names = F)  
 
 ### Peak calling using MACS2
-
--  m6A peak calling using MACS2  
+ 
 >  cmrMat <- CMRCalling(CMR = "m6A", method = "MACS2", IPBAM = RIP.bam, inputBAM = input.bam, GTF = GTF, ...="--nomodel")  
 
 **Note:** futher parameters recognized by MACS2 can be specified in "..."  
 >  write.table(cmrMat, file = "MACS2_peaks.txt", sep = "\\t", quote = F, row.names = F, col.names = F)  
--  Peak calling using BayesPeak  
+
+###  Peak calling using BayesPeak  
+
 >  cmrMat <- CMRCalling(CMR = "m6A", method = "BayesPeak", IPBAM = RIP.bam, inputBAM = input.bam, GTF = GTF)  
 >  write.table(cmrMat, file = "BayesPeak_peaks.txt", sep = "\\t", quote = F, row.names = F, col.names = F)  
 
@@ -187,13 +186,12 @@ Sample vectorization with three feature encoding schemes
    *L*\*4 *binary*-based features, 20 *k-mer* based features (*k* = 1 and *k* =
    2) and 22 PseDNC-based features.
 
-Extracting flanking sequence of 101-nt centered on m6A or non-m6A
-
+-  Extracting flanking sequence of 101-nt centered on m6A or non-m6A  
 >  positives <- posSamples\$positives  
 >  posSeq <- extractSeqs(RNAseq = cDNA, samples = positives, seqLen = 101)  
 >  unlabelSeq <- extractSeqs(RNAseq = cDNA, samples = unlabelSamples, seqLen = 101)  
 
-   Feature encoding using *binary*, *k-mer* and *PseDNC* encoding schemes  
+-  Feature encoding using *binary*, *k-mer* and *PseDNC* encoding schemes  
 >  posFeatureMat <- featureEncoding(RNAseq = posSeq)  
 >  unlabelFeatureMat <- featureEncoding(RNAseq = unlabelSeq)  
 >  featureMat <- rbind(posFeatureMat, unlabelFeatureMat)  
