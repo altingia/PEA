@@ -1,5 +1,7 @@
 ############################################################
 ##general functions in ML
+##Authors: Jingjing Zhai, Chuang Ma
+##Contact: zhaijingjing603@gmail.com
 
 
 #Function: get sample index for cv cross validation
