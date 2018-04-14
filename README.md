@@ -15,21 +15,21 @@ PEA installation
 Docker installation and start
 -----------------------------
 
--   For Windows:
+-   For Windows (Test on Windows 10 Enterprise version):
 1.  Download the installer from following URL: <https://download.docker.com/win/stable/Docker%20for%20Windows%20Installer.exe>;
 2.  Double click the EXE file to open it;
 3.  Follow the wizard instruction and complete installation;
 4.  Search docker, select **Docker for Windows** in the search results and click
     it.
--   On Mac OS X:
+-   For Mac OS X (Test on macOS Sierra version 10.12.6 and macOS High Sierra version 10.13.3):
 1.  Download the installer from following URL:<https://download.docker.com/mac/stable/Docker.dmg>;
 2.  Double click the DMG file to open it;
 3.  Drag the docker into Applications and complete installation;
 4.  Start docker from Launchpad by click it.
--   On Ubuntu:
+-   For Ubuntu (Test on Ubuntu 14.04 LTS and Ubuntu 16.04 LTS):
 1.  Go to <https://download.docker.com/linux/ubuntu/dists/>, choose your Ubuntuversion, browse to *pool/stable* and choose *amd64*, *armhf, ppc64el* or *s390x*. Download the DEB file for the Docker version you want to install;
 2.  Install Docker, supposing that the DEB file is download into following path:`/home/docker-ce<version-XXX>~ubuntu_amd64.deb`
->    \$ sudo dpkg -i /home/docker-ce<version-XXX>~ubuntu_amd64.deb    
+>    \$ sudo dpkg -i `/home/docker-ce<version-XXX>~ubuntu_amd64.deb`      
 >    \$ sudo apt-get install -f
 
  Verify if Docker is installed correctly 
@@ -62,11 +62,11 @@ Quickly start
 
   Once PEA is installed successfully, type the following command to start PEA:  
 >  \$ docker run -it -v **/host directory of dataset**:/home/data malab/pea R  
->  #Supposing that users’ private dataset is located in directory “/home/test”, then change the bold words above (**/host directory of dataset**) to host directory (**/home/test**)
+**Note:** Supposing that users’ private dataset is located in directory `/home/test`, then change the bold words above (**/host directory of dataset**) to host directory (`/home/test`)  
 >  library(PEA)  
 >  setwd("/home/data/")  
 
-**Important:** the directory ("/home/data/") is a virtual directory in PEA Docker image. In order to use private dataset more easily, the parameter “-v” is strongly recommended to mount host directory of dataset to PEA image.  
+**Important:** the directory (`/home/data/`) is a virtual directory in PEA Docker image. In order to use private dataset more easily, the parameter “-v” is strongly recommended to mount host directory of dataset to PEA image.  
 
 CMR calling 
 ============
