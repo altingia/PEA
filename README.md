@@ -63,9 +63,7 @@ Quickly start
   Once PEA is installed successfully, type the following command to start PEA:
 
 >  \$ docker run –it malab/pea R
-
 >  library(PEA)
-
 >  setwd("/home/data/")
 
    **Important:** the directory ("/home/data/") is virtual directory in PEA
@@ -74,12 +72,8 @@ Quickly start
    image.
 
 >  \$ docker run –it –v /host directory of dataset:/home/data malab/pea R
-
-   Supposing that users’ private dataset is located in directory
-    “/home/test”, then change the red colored words above (/host
-    directory of dataset) to host directory (/home/test)
-
->  library(PEA)  
+   Supposing that users’ private dataset is located in directory “/home/test”, then change the red colored words above (/host directory of dataset) to host directory (/home/test)
+>  library(PEA)
 
 >  setwd("/home/data/")
 
@@ -92,23 +86,16 @@ Reads mapping using tophat
   Loading sample data for reads mapping  
 
 >  fq <-  system.file("extdata/test.fq", package = "PEA")  
-
 >  referenceGenome <- system.file("extdata/chromosome1.fa", package = "PEA")
 
   reads mapping using tophat with default parameter, the alignment results
     will be saved to the working directory (/host directory of dataset) 
 
->  test.bam <- readMapping(alignment = "tophat", fq = fq,   
-
->                          refGenome = referenceGenome, paired = F)  
+>  test.bam <- readMapping(alignment = "tophat", fq = fq, refGenome = referenceGenome, paired = F)  
 
 reads mapping using tophat with 2 threads  
 
->  test.bam <- readMapping(alignment = "tophat", fq = fq,   
-
->                          refGenome = referenceGenome, paired = F,  
-
->                         ... = "-p 2")  
+>  test.bam <- readMapping(alignment = "tophat", fq = fq,refGenome = referenceGenome, paired = F, ... = "-p 2")  
 
    **Note:** other alignment toolkits such as Bowtie, Bowtie 2, TopHat 2, Hisat
    and Hisat can be easily invoked by specifying “alignment” parameter in
@@ -149,26 +136,17 @@ Peak calling methods implemented in PEA
   Loading sample data for peak calling  
 
 >  input.bam <- system.file("extdata/chr1_input_test.bam", package = "PEA") 
-
 >  RIP.bam <- system.file("extdata/chr1_RIP_test.bam", package = "PEA")  
-
 >  refGenome <- system.file("extdata/chromosome1.fa", package = "PEA")  
-
 >  GTF <- system.file("extdata/chromosome1.gtf", package = "PEA")  
 
   Peak calling using sliding window-based method
-
->  cmrMat <- CMRCalling(CMR = "m6A", IPBAM = RIP.bam, inputBAM = input.bam,
-
->                       method = "SlidingWindow", mappedInput = 17472,   
-
->                       mappedRIP = 20072, refGenome = refGenome) 
+>  cmrMat <- CMRCalling(CMR = "m6A", IPBAM = RIP.bam, inputBAM = input.bam, method = "SlidingWindow", mappedInput = 17472,   
+mappedRIP = 20072, refGenome = refGenome) 
 
 Save the results into working directory
 
-> write.table(cmrMat, file = "SlidingWindow_peaks.txt", sep = "\\t",  
-
->             quote = F, row.names = F, col.names = F)  
+> write.table(cmrMat, file = "SlidingWindow_peaks.txt", sep = "\\t", quote = F, row.names = F, col.names = F)  
 
 **Note:** parameters "mappedInput" and "mappedRIP" represent the number of reads aligned to reference genome in input and RIP samples, respectively.
 
@@ -176,46 +154,30 @@ Save the results into working directory
 
 m6A peak calling using exomePeak  
 
->  cmrMat <- CMRCalling(CMR = "m6A", method = "exomePeak", IPBAM = RIP.bam, 
-
->                       inputBAM = input.bam, GTF = GTF)  
-
->  write.table(cmrMat, file = "exomePeak_peaks.txt", sep = "\\t",  
-
->              quote = F, row.names = F, col.names = F)  
+>  cmrMat <- CMRCalling(CMR = "m6A", method = "exomePeak", IPBAM = RIP.bam, inputBAM = input.bam, GTF = GTF)  
+>  write.table(cmrMat, file = "exomePeak_peaks.txt", sep = "\\t", quote = F, row.names = F, col.names = F)  
 
 ### Peak calling using MetPeak
 
 m6A peak calling using MetPeak  
-
->  cmrMat <- CMRCalling(CMR = "m6A", method = "MetPeak", IPBAM = RIP.bam,  
-
->                        inputBAM = input.bam, GTF = GTF)  
-
->  write.table(cmrMat, file = "MetPeak_peaks.txt", sep = "\\t",  
-
->              quote = F, row.names = F, col.names = F)  
+>  cmrMat <- CMRCalling(CMR = "m6A", method = "MetPeak", IPBAM = RIP.bam,  inputBAM = input.bam, GTF = GTF)  
+>  write.table(cmrMat, file = "MetPeak_peaks.txt", sep = "\\t",quote = F, row.names = F, col.names = F)  
 
 ### Peak calling using MACS2
 
 m6A peak calling using MACS2  
 
->  cmrMat <- CMRCalling(CMR = "m6A", method = "MACS2", IPBAM = RIP.bam,  
-
->                       inputBAM = input.bam, GTF = GTF, ...="--nomodel")  
+>  cmrMat <- CMRCalling(CMR = "m6A", method = "MACS2", IPBAM = RIP.bam, inputBAM = input.bam, GTF = GTF, ...="--nomodel")  
 
 **Note:** futher parameters recognized by MACS2 can be specified in "..."
 
->  write.table(cmrMat, file = "MACS2_peaks.txt", sep = "\\t",  
-
->              quote = F, row.names = F, col.names = F)  
+>  write.table(cmrMat, file = "MACS2_peaks.txt", sep = "\\t", quote = F, row.names = F, col.names = F)  
 
 ### Peak calling using BayesPeak
 
 m6A peak calling using BayesPeak  
 
 >  cmrMat <- CMRCalling(CMR = "m6A", method = "BayesPeak", IPBAM = RIP.bam,
-
 >                        inputBAM = input.bam, GTF = GTF)  
 
 >  write.table(cmrMat, file = "BayesPeak_peaks.txt", sep = "\\t",  
