@@ -2,21 +2,15 @@
 ![](https://halobi.com/wp-content/uploads/2016/08/r_logo.png "R logo")
 ![](https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSvCvZWbl922EJkjahQ5gmTpcvsYr3ujQBpMdyX-YG99vGWfTAmfw "linux logo")
 ![](https://tctechcrunch2011.files.wordpress.com/2014/06/apple_topic.png?w=220)
-
-
-
 **Brief introduction:**
-
 PEA is a docker-based integrated R toolkit that aims to facilitate the plant epitranscriptome analysis. This toolkit contains a comprehensive collection of functions required for read mapping, CMR calling, motif scanning and discovery, and gene functional enrichment analysis. PEA also takes advantage of machine learning technologies for transcriptome-scale CMR prediction, with high prediction accuracy, using the Positive Samples Only Learning algorithm, which addresses the two-class classification problem by using only positive samples (CMRs), in the absence of negative samples (non-CMRs). Hence PEA is a versatile epitranscriptome analysis pipeline covering CMR calling, prediction, and annotation.
 
-PEA installation
-================
+## PEA installation ##
 
-Docker installation and start
------------------------------
+### Docker installation and start ###
 
--   For Windows (Test on Windows 10 Enterprise version):
-1.  Download the installer from following URL: <https://download.docker.com/win/stable/Docker%20for%20Windows%20Installer.exe>;
+#### For Windows (Test on Windows 10 Enterprise version): ####
+#### 1.  Download the installer from following URL: <https://download.docker.com/win/stable/Docker%20for%20Windows%20Installer.exe>;
 2.  Double click the EXE file to open it;
 3.  Follow the wizard instruction and complete installation;
 4.  Search docker, select **Docker for Windows** in the search results and click
