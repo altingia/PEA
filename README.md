@@ -43,13 +43,9 @@ $ sudo dpkg -i /home/docker-ce-<version-XXX>~ubuntu_amd64.deb
 $ sudo apt-get install -f
 <pre> 
 
- Verify if Docker is installed correctly 
-----------------------------------------
-
-   Once Docker installation is completed, we can run **hello-world** image to
-   verify if Docker is installed correctly. Open terminal in Mac OS X and Linux
-   operating system and open CMD for Windows operating system, then type the
-   following command:
+Verify if Docker is installed correctly
+=======================================
+Once Docker installation is completed, we can run **hello-world** image toverify if Docker is installed correctly. Open terminal in Mac OS X and Linux operating system and open CMD for Windows operating system, then type the following command:
 <pre>  
 $ docker run hello-world
 <pre>  
