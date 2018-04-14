@@ -1,11 +1,8 @@
-# PEA
-An integrated R toolkit for Plant Epitranscriptome Analysis
 # **PEA**: An integrated R toolkit for plant epitranscriptome analysis </br>
 ![](https://halobi.com/wp-content/uploads/2016/08/r_logo.png "R logo")
 ![](https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSvCvZWbl922EJkjahQ5gmTpcvsYr3ujQBpMdyX-YG99vGWfTAmfw "linux logo")
 ![](https://tctechcrunch2011.files.wordpress.com/2014/06/apple_topic.png?w=220)
 
-PEA Manual
 
 
 **Brief introduction:**
@@ -19,67 +16,72 @@ Docker installation and start
 -----------------------------
 
 -   For Windows:
-
-  1.  Download the installer from following URL:
-      <https://download.docker.com/win/stable/Docker%20for%20Windows%20Installer.exe>;
-  2.  Double click the EXE file to open it;
-  3.  Follow the wizard instruction and complete installation;
-  4.  Search docker, select **Docker for Windows** in the search results and click it.
-
+1.  Download the installer from following URL: <https://download.docker.com/win/stable/Docker%20for%20Windows%20Installer.exe>;
+2.  Double click the EXE file to open it;
+3.  Follow the wizard instruction and complete installation;
+4.  Search docker, select **Docker for Windows** in the search results and click
+    it.
 -   On Mac OS X:
-
-1.  Download the installer from following URL:
-    <https://download.docker.com/mac/stable/Docker.dmg>;
+1.  Download the installer from following URL:<https://download.docker.com/mac/stable/Docker.dmg>;
 2.  Double click the DMG file to open it;
 3.  Drag the docker into Applications and complete installation;
 4.  Start docker from Launchpad by click it.
-
 -   On Ubuntu:
-
-1.  Go to <https://download.docker.com/linux/ubuntu/dists/>, choose your Ubuntu version, browse to *pool/stable* and choose *amd64*, *armhf, ppc64el* or *s390x*. Download the DEB file for the Docker version you want to install;
+1.  Go to <https://download.docker.com/linux/ubuntu/dists/>, choose your Ubuntuversion, browse to *pool/stable* and choose *amd64*, *armhf, ppc64el* or *s390x*. Download the DEB file for the Docker version you want to install;
 2.  Install Docker, supposing that the DEB file is download into following path:`/home/docker-ce<version-XXX>~ubuntu_amd64.deb`
-<pre> 
-$ sudo dpkg -i /home/docker-ce-<version-XXX>~ubuntu_amd64.deb
-$ sudo apt-get install -f
-<pre> 
+>    \$ sudo dpkg –i /home/docker-ce-<version-XXX>~ubuntu_amd64.deb
+>    \$ sudo apt-get install -f
 
-Verify if Docker is installed correctly
-=======================================
-Once Docker installation is completed, we can run **hello-world** image toverify if Docker is installed correctly. Open terminal in Mac OS X and Linux operating system and open CMD for Windows operating system, then type the following command:
-<pre>  
-$ docker run hello-world
-<pre>  
+ Verify if Docker is installed correctly 
+----------------------------------------
 
- **Note:** root permission is required for Linux operating system.
+   Once Docker installation is completed, we can run **hello-world** image to verify if Docker is installed correctly. Open terminal in Mac OS X and Linux operating system and open CMD for Windows operating system, then type the following command:
+
+>   \# docker run hello-world
+
+   **Note:** root permission is required for Linux operating system.
 
 
-**Note:** considering that differences between different computers may exist, please refer to official installation manual (
+-   **Note:** considering that differences between different computers may
+    exist, please refer to official installation manual (
     *https://docs.docker.com/install)* if instructions above don’t work.
 
 
 PEA installation from Docker Hub
 --------------------------------
 
-  For Mac OS X and Linux operating systems, open the terminal, for Windows operating system, open CMD. Typing the following command:
+  For Mac OS X and Linux operating systems, open the terminal, for Windows
+  operating system, open CMD. Typing the following command:
 
-  Pull PEA from Docker PEA 
-<pre>
-$ docker pull malab/pea
-<pre>
+ Pull PEA from Docker PEA 
+
+>  \$ docker pull malab/pea 
 
 Quickly start
 -------------
 
-Once PEA is installed successfully, type the following command to start PEA:
-<pre>  
-$ docker run -it -v /host directory of dataset:/home/data malab/pea R
-#Supposing that users’ private dataset is located in the directory “/home/test”, then change the red colored words above (/host directory of dataset) to host directory (/home/test)
-library(PEA)
-setwd("/home/data/")
-<pre>
+  Once PEA is installed successfully, type the following command to start PEA:
 
-**Important:** the directory ("/home/data/") is virtual directory in PEA Docker image. In order to use private dataset more easily, the parameter “-v” is strongly recommended to mount host directory of dataset to PEA image.
-   
+>  \$ docker run –it malab/pea R
+
+>  library(PEA)
+
+>  setwd("/home/data/")
+
+   **Important:** the directory ("/home/data/") is virtual directory in PEA
+   Docker image. In order to use private dataset more easily, the parameter
+   “-v” is strongly recommended to mount host directory of dataset to PEA
+   image.
+
+>  \$ docker run –it –v /host directory of dataset:/home/data malab/pea R
+
+   Supposing that users’ private dataset is located in directory
+    “/home/test”, then change the red colored words above (/host
+    directory of dataset) to host directory (/home/test)
+
+>  library(PEA)  
+
+>  setwd("/home/data/")
 
 CMR calling 
 ============
@@ -87,31 +89,40 @@ CMR calling
 Reads mapping using tophat
 --------------------------
 
-Loading sample data for reads mapping  
-<pre>  
-fq <-  system.file("extdata/test.fq", package = "PEA")  
-referenceGenome <- system.file("extdata/chromosome1.fa", package = "PEA")
-<pre>  
+  Loading sample data for reads mapping  
 
-reads mapping using tophat with default parameter, the alignment results will be saved to the working directory (/host directory of dataset) 
+>  fq <-  system.file("extdata/test.fq", package = "PEA")  
 
-<pre> 
-test.bam <- readMapping(alignment = "tophat", fq = fq, refGenome = referenceGenome, paired = F)  
-<pre> 
+>  referenceGenome <- system.file("extdata/chromosome1.fa", package = "PEA")
+
+  reads mapping using tophat with default parameter, the alignment results
+    will be saved to the working directory (/host directory of dataset) 
+
+>  test.bam <- readMapping(alignment = "tophat", fq = fq,   
+
+>                          refGenome = referenceGenome, paired = F)  
 
 reads mapping using tophat with 2 threads  
-<pre> 
-test.bam <- readMapping(alignment = "tophat", fq = fq, refGenome = referenceGenome, paired = F,  ... = "-p 2")  
-<pre> 
-   
-**Note:** other alignment toolkits such as Bowtie, Bowtie 2, TopHat 2, Hisat and Hisat can be easily invoked by specifying “alignment” parameter in “readMapping” function.
+
+>  test.bam <- readMapping(alignment = "tophat", fq = fq,   
+
+>                          refGenome = referenceGenome, paired = F,  
+
+>                         ... = "-p 2")  
+
+   **Note:** other alignment toolkits such as Bowtie, Bowtie 2, TopHat 2, Hisat
+   and Hisat can be easily invoked by specifying “alignment” parameter in
+   “readMapping” function.
 
 Peak calling methods implemented in PEA
 ---------------------------------------
 
-PEA integrated five peak calling methods including “SlidingWindow”, “exomePeak”, “MetPeak”, “MACS2” and “BayesPeak”. each peak calling method can be easily invoked by specifying parameter “method” in “CMRCalling” function.
+   PEA integrated five peak calling methods including “SlidingWindow”,
+   “exomePeak”, “MetPeak”, “MACS2” and “BayesPeak”. each peak calling method
+   can be easily invoked by specifying parameter “method” in “CMRCalling”
+   function.
 
-**How to choose:**
+   **How to choose:**
 
 1.  “SlidingWindow” is used to examine the significant enriched regions (peaks)
     using Fisher’s exact test-based sliding window method between RIP and input
@@ -136,66 +147,81 @@ PEA integrated five peak calling methods including “SlidingWindow”, “exome
 ### Peak calling using SlindingWindow
 
   Loading sample data for peak calling  
-<pre> 
-  input.bam <- system.file("extdata/chr1_input_test.bam", package = "PEA") 
-  RIP.bam <- system.file("extdata/chr1_RIP_test.bam", package = "PEA")  
-  refGenome <- system.file("extdata/chromosome1.fa", package = "PEA")  
-  GTF <- system.file("extdata/chromosome1.gtf", package = "PEA")  
-</pre> 
+
+>  input.bam <- system.file("extdata/chr1_input_test.bam", package = "PEA") 
+
+>  RIP.bam <- system.file("extdata/chr1_RIP_test.bam", package = "PEA")  
+
+>  refGenome <- system.file("extdata/chromosome1.fa", package = "PEA")  
+
+>  GTF <- system.file("extdata/chromosome1.gtf", package = "PEA")  
+
   Peak calling using sliding window-based method
 
-<pre>  cmrMat <- CMRCalling(CMR = "m6A", IPBAM = RIP.bam, inputBAM = input.bam,
-                            method = "SlidingWindow", mappedInput = 17472,
-                            mappedRIP = 20072, refGenome = refGenome) 
-</pre> 
+>  cmrMat <- CMRCalling(CMR = "m6A", IPBAM = RIP.bam, inputBAM = input.bam,
+
+>                       method = "SlidingWindow", mappedInput = 17472,   
+
+>                       mappedRIP = 20072, refGenome = refGenome) 
+
 Save the results into working directory
 
-<pre> write.table(cmrMat, file = "SlidingWindow_peaks.txt", sep = "\\t",  
-            quote = F, row.names = F, col.names = F)  
-</pre> 
+> write.table(cmrMat, file = "SlidingWindow_peaks.txt", sep = "\\t",  
+
+>             quote = F, row.names = F, col.names = F)  
+
 **Note:** parameters "mappedInput" and "mappedRIP" represent the number of reads aligned to reference genome in input and RIP samples, respectively.
 
 ### Peak calling using exomePeak
 
 m6A peak calling using exomePeak  
 
-<pre> cmrMat <- CMRCalling(CMR = "m6A", method = "exomePeak", IPBAM = RIP.bam, 
-                            inputBAM = input.bam, GTF = GTF)  
-write.table(cmrMat, file = "exomePeak_peaks.txt", sep = "\\t",
-                  quote = F, row.names = F, col.names = F)  
-</pre> 
+>  cmrMat <- CMRCalling(CMR = "m6A", method = "exomePeak", IPBAM = RIP.bam, 
+
+>                       inputBAM = input.bam, GTF = GTF)  
+
+>  write.table(cmrMat, file = "exomePeak_peaks.txt", sep = "\\t",  
+
+>              quote = F, row.names = F, col.names = F)  
+
 ### Peak calling using MetPeak
 
 m6A peak calling using MetPeak  
 
-<pre>   cmrMat <- CMRCalling(CMR = "m6A", method = "MetPeak", IPBAM = RIP.bam,  
-                           inputBAM = input.bam, GTF = GTF)  
+>  cmrMat <- CMRCalling(CMR = "m6A", method = "MetPeak", IPBAM = RIP.bam,  
 
-write.table(cmrMat, file = "MetPeak_peaks.txt", sep = "\\t",  
-            quote = F, row.names = F, col.names = F)  
-</pre> 
+>                        inputBAM = input.bam, GTF = GTF)  
+
+>  write.table(cmrMat, file = "MetPeak_peaks.txt", sep = "\\t",  
+
+>              quote = F, row.names = F, col.names = F)  
+
 ### Peak calling using MACS2
 
 m6A peak calling using MACS2  
 
-<pre> cmrMat <- CMRCalling(CMR = "m6A", method = "MACS2", IPBAM = RIP.bam,  
-                      inputBAM = input.bam, GTF = GTF, ...="--nomodel")  
-</pre> 
+>  cmrMat <- CMRCalling(CMR = "m6A", method = "MACS2", IPBAM = RIP.bam,  
+
+>                       inputBAM = input.bam, GTF = GTF, ...="--nomodel")  
+
 **Note:** futher parameters recognized by MACS2 can be specified in "..."
 
-<pre> write.table(cmrMat, file = "MACS2_peaks.txt", sep = "\\t",  
-              quote = F, row.names = F, col.names = F)  
-</pre> 
+>  write.table(cmrMat, file = "MACS2_peaks.txt", sep = "\\t",  
+
+>              quote = F, row.names = F, col.names = F)  
+
 ### Peak calling using BayesPeak
 
 m6A peak calling using BayesPeak  
 
-<pre>   cmrMat <- CMRCalling(CMR = "m6A", method = "BayesPeak", IPBAM = RIP.bam,
-                             inputBAM = input.bam, GTF = GTF)  
+>  cmrMat <- CMRCalling(CMR = "m6A", method = "BayesPeak", IPBAM = RIP.bam,
 
-write.table(cmrMat, file = "BayesPeak_peaks.txt", sep = "\\t",  
-              quote = F, row.names = F, col.names = F)  
-</pre> 
+>                        inputBAM = input.bam, GTF = GTF)  
+
+>  write.table(cmrMat, file = "BayesPeak_peaks.txt", sep = "\\t",  
+
+>              quote = F, row.names = F, col.names = F)  
+
 CMR prediction
 ==============
 
@@ -206,10 +232,10 @@ Samples organization
 
 Convert genomic position to cDNA position  
 
-<pre>  GTF <- system.file("extdata/chromosome1.gtf", package = "PEA")  
+>  GTF <- system.file("extdata/chromosome1.gtf", package = "PEA")  
 
-peaks <- G2T(bedPos = cmrMat, GTF = GTF)  
-</pre> 
+>  peaks <- G2T(bedPos = cmrMat, GTF = GTF)  
+
 Searching RRACH motif from cDNA sequence  
 
 >  cDNA <- system.file("extdata/chr1_cdna.fa", package = "PEA")  
@@ -217,11 +243,12 @@ Searching RRACH motif from cDNA sequence
 >  motifPos <- searchMotifPos(sequence = cDNA)  
 
 Find confident positive samples and unlabel samples  
-<pre> posSamples <- findConfidentPosSamples(peaks = peaks, motifPos = motifPos)
 
-unlabelSamples <- findUnlabelSamples(cDNAID = posSamples\$cDNAID, motifPos = motifPos,
-                                       posSamples = posSamples\$positives)  
-</pre> 
+>  posSamples <- findConfidentPosSamples(peaks = peaks, motifPos = motifPos)
+
+>  unlabelSamples <- findUnlabelSamples(cDNAID = posSamples\$cDNAID, motifPos = motifPos,
+    posSamples = posSamples\$positives)  
+
 Sample vectorization with three feature encoding schemes
 --------------------------------------------------------
 
@@ -232,18 +259,24 @@ Sample vectorization with three feature encoding schemes
    2) and 22 PseDNC-based features.
 
 Extracting flanking sequence of 101-nt centered on m6A or non-m6A
-<pre> 
-positives <- posSamples\$positives  
-posSeq <- extractSeqs(RNAseq = cDNA, samples = positives, seqLen = 101)  
-unlabelSeq <- extractSeqs(RNAseq = cDNA, samples = unlabelSamples, seqLen = 101)  
-</pre> 
 
-Feature encoding using *binary*, *k-mer* and *PseDNC* encoding schemes  
-<pre>  
-posFeatureMat <- featureEncoding(RNAseq = posSeq)  
-unlabelFeatureMat <- featureEncoding(RNAseq = unlabelSeq)  
-featureMat <- rbind(posFeatureMat, unlabelFeatureMat)  
-</pre> 
+>  positives <- posSamples\$positives  
+
+>  posSeq <- extractSeqs(RNAseq = cDNA, samples = positives,  
+
+>                         seqLen = 101)  
+
+>  unlabelSeq <- extractSeqs(RNAseq = cDNA, samples = unlabelSamples,   
+
+>                             seqLen = 101)  
+
+   Feature encoding using *binary*, *k-mer* and *PseDNC* encoding schemes  
+
+>  posFeatureMat <- featureEncoding(RNAseq = posSeq)  
+
+>  unlabelFeatureMat <- featureEncoding(RNAseq = unlabelSeq)  
+
+> featureMat <- rbind(posFeatureMat, unlabelFeatureMat)  
 
 Construction of a CRM predictor using random forest (RF) and PSOL algorithm
 ---------------------------------------------------------------------------
@@ -256,44 +289,50 @@ In each iteration, an m6A predictor was built using the RF algorithm with positi
 <br>
 
 Creating a directory to save psol results
-</pre> 
-dir.create("./psol")  
-psolResDic <- "./psol/"  
-</pre> 
-Starting running PSOL
-<pre> 
- psolRes <- PSOL(featureMatrix = featureMat, positives = positives,  
-                  unlabels = unlabelSamples, PSOLResDic = psolResDic,  
-                  cpus = 1)
-</pre> 
-Extracting negative samples generated by PSOL
-</pre> 
-negatives <- psolRes\$finalNegatives  
-</pre> 
 
-Performing 5-fold cross-validation experiment to evaluate the performance of predictor
-<pre>  
-cvRes <- cross_validation(featureMat = featureMat, positives = positives,
-                           negatives = negatives, cross = 5)
-</pre> 
+>  dir.create("./psol")  
+
+>  psolResDic <- "./psol/"  
+
+Starting running PSOL
+
+>  psolRes <- PSOL(featureMatrix = featureMat, positives = positives,  
+
+>                  unlabels = unlabelSamples, PSOLResDic = psolResDic,  
+
+>                  cpus = 1)
+
+Extracting negative samples generated by PSOL
+
+>  negatives <- psolRes\$finalNegatives  
+
+Performing 5-fold cross-validation experiment to evaluate the performance
+    of predictor
+
+> cvRes <- cross_validation(featureMat = featureMat, positives = positives,
+
+>                           negatives = negatives, cross = 5)
 
 Plotting ROC curves for 5-fold cross-validation
-<pre>  
-pdf("cross_validation.pdf", height = 5, width = 5)
-plotROC(cvRes = cvRes)  
-dev.off()
-</pre> 
+
+> pdf("cross_validation.pdf", height = 5, width = 5)
+
+> plotROC(cvRes = cvRes)  
+
+> dev.off()
 
 CMR prediction using predictor generated by PSOL
 ------------------------------------------------
 
-After performing PSOL, an m6A predictor would be generated in the “psolRes” object, users can easily predict novel candidate CMRs by following command.
+  After performing PSOL, an m6A predictor would be generated in the “psolRes”
+   object, users can easily predict novel candidate CMRs by following command.
 
 Predicting novel candidate m6A modifications
-</pre> 
-predSeq <- system.file("extdata/test_pred.fa", package = "PEA")  
-predMat <- predCMR(predSeq, model = psolRes\$model)  
-</pre> 
+
+>  predSeq <- system.file("extdata/test_pred.fa", package = "PEA")  
+
+>predMat <- predCMR(predSeq, model = psolRes\$model)  
+
 CMR annotation
 ==============
 
@@ -303,81 +342,107 @@ CMR location distribution
 -------------------------
 
 Loading sample data  
-</pre> 
-GTF <- system.file("extdata/chromosome1.gtf", package = "PEA")  
-input.bam <- system.file("extdata/chr1_input_test.bam", package = "PEA") 
-RIP.bam <- system.file("extdata/chr1_RIP_test.bam", package = "PEA")  
-refGenome <- system.file("extdata/chromosome1.fa", package = "PEA")  
-cDNA <- system.file("extdata/chr1_cdna.fa", package = "PEA")  
-</pre> 
+
+>  GTF <- system.file("extdata/chromosome1.gtf", package = "PEA")  
+
+>  input.bam <- system.file("extdata/chr1_input_test.bam", package = "PEA") 
+
+>  RIP.bam <- system.file("extdata/chr1_RIP_test.bam", package = "PEA")  
+
+>  refGenome <- system.file("extdata/chromosome1.fa", package = "PEA")  
+
+>  cDNA <- system.file("extdata/chr1_cdna.fa", package = "PEA")  
 
 Extract the UTR position from GTF file  
-<pre>  
-UTRMat <- getUTR(GTF = GTF)  
-cmrMat <- CMRCalling(CMR = "m6A", IPBAM = RIP.bam, inputBAM = input.bam, method = "SlidingWindow", mappedInput = 17472,  
-                     mappedRIP = 20072, refGenome = refGenome)  
-</pre> 
+
+>  UTRMat <- getUTR(GTF = GTF)  
+
+>  cmrMat <- CMRCalling(CMR = "m6A", IPBAM = RIP.bam, inputBAM = input.bam, 
+
+>                      method = "SlidingWindow", mappedInput = 17472,  
+
+>                      mappedRIP = 20072, refGenome = refGenome)  
 
 Perform CMR location distribution analysis  
-<pre> 
- pdf("CMR_location.pdf", height = 10, width = 10)
- results <- CMRAnnotation(cmrMat = cmrMat, SNR = F, UTRMat = UTRMat, genomic = T, annotation = "location", GTF = GTF,
-                         RNAseq = cDNA) 
- dev.off()
-</pre> 
+
+> pdf("CMR_location.pdf", height = 10, width = 10)
+
+> results <- CMRAnnotation(cmrMat = cmrMat, SNR = F, UTRMat = UTRMat,  
+
+>                          genomic = T, annotation = "location", GTF = GTF,
+
+>                          RNAseq = cDNA) 
+
+> dev.off()
+
 Motif scanning and discovery
 ----------------------------
 
 Search motif  
-<pre> 
-  testSeq <- system.file("extdata/test.fa", package = "PEA")  
-  pdf("motifScan.pdf", height = 5, width = 5)  
-  results.scan <- CMRAnnotation(cmrSeq = testSeq,   
-                                annotation = "motifScan")  
-  dev.off()  
-</pre> 
+
+>  testSeq <- system.file("extdata/test.fa", package = "PEA")  
+
+>  pdf("motifScan.pdf", height = 5, width = 5)  
+
+>  results.scan <- CMRAnnotation(cmrSeq = testSeq,   
+
+>                                annotation = "motifScan")  
+
+>  dev.off()  
 
 De-novo motif detection  
-<pre> 
-  pdf("motifDetect.pdf", height = 5, width = 5)  
-  results.detect <- CMRAnnotation(cmrSeq = testSeq, annotation = "motifDetect")
-  dev.off()  
-</pre> 
+
+>  pdf("motifDetect.pdf", height = 5, width = 5)  
+
+>  results.detect <- CMRAnnotation(cmrSeq = testSeq,   
+
+>                                 annotation = "motifDetect")  
+
+> dev.off()  
+
 Functional enrichment analysis of CMR corresponded genes
 --------------------------------------------------------
-<pre> 
-  \#GO enrichment analysis
-library(topGO)  
-peaks <- G2T(bedPos = cmrMat, GTF = GTF)  
-enrichment <- CMRAnnotation(cmrMat = peaks, GTF = GTF, annotation = "GO", topNodes = 20, dataset = "athaliana_eg_gene")
-</pre> 
+
+>  \#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#GO analysis\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#  
+
+>  library(topGO)  
+
+>  peaks <- G2T(bedPos = cmrMat, GTF = GTF)  
+
+>  enrichment <- CMRAnnotation(cmrMat = peaks, GTF = GTF, annotation = "GO",
+
+>                              topNodes = 20, dataset = "athaliana_eg_gene")
 
 Source codes availability
 =========================
 
-   The source codes of PEA are freely available at <https://github.com/cma2015/PEA>
+   The source codes of PEA are freely available at
+   <https://github.com/cma2015/PEA>
 
 How to access help
 ==================
 
--   If users encounter any bugs or issues, feel free to leave a message at Github issues: <https://github.com/cma2015/PEA/issues>. We will try our best to deal with all issues as soon as possible.
+-   If users encounter any bugs or issues, feel free to leave a message at
+    Github issues: <https://github.com/cma2015/PEA/issues>. We will try our best
+    to deal with all issues as soon as possible.
 
--   In addition, if any suggestions are available, feel free to contact: <zhaijingjing603@gmail.com> or <chuangma2006@gmail.com>
+-   In addition, if any suggestions are available, feel free to contact:
+    <zhaijingjing603@gmail.com> or <chuangma2006@gmail.com>
 
 References
 ==========
 
-  Chen, W.*, et al.* Identifying N 6-methyladenosine sites in the Arabidopsis
+  Chen, W.*, et al.* Identifying N6-methyladenosine sites in the Arabidopsis
    thaliana transcriptome. *Mol Genet Genomics* 2016;291(6):2225-2229.
 
-   Cui, H., Zhai, J. and Ma, C. miRLocator: machine mearning-based prediction
-   of mature microRNAs within plant pre-miRNA pequences. *PLoS One*
+   Cui, H., Zhai, J. and Ma, C. miRLocator: machine learning-lased prediction
+   of mature microRNAs within plant pre-miRNA sequences. *PLoS One*
    2015;10(11):e0142753.
 
    Ma, C.*, et al.* Machine learning-based differential network analysis: a
    study of stress-responsive transcriptomes in Arabidopsis. *Plant Cell*  2014;26(2):520-537.
 
-   Touw, W.G.*, et al.* Data mining in the life lciences with random forest: a
+   Touw, W.G.*, et al.* Data mining in the life sciences with random forest: a
    walk in the park or lost in the jungle? *Brief Bioinform* 2013;14(3):315-326.
 
    Wang, C.L.*, et al.* PSoL: a positive sample only learning algorithm for
