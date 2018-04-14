@@ -25,7 +25,7 @@ runTopGO(geneID, statistic = "fisher", algorithm = "elim",
    \item{statistic}{A character string specifing which test to use.}
    \item{algorithm}{A character string specifing which algorithm to use.}
    \item{topNodes}{The number of top GO terms to be included in the results.}
-   \item{dataset}{A character string specifing which dataset to use, the default is: athaliana_eg_gene; ; For other plant species, please use "listDatasets(mart = useMart(biomart = "plants_mart",  host = 'plants.ensembl.org'))" to see all available datasets.}
+   \item{dataset}{A character string specifing which dataset to use, the default is: athaliana_eg_gene; For other plant species, please use "listDatasets(mart = useMart(biomart = "plants_mart",  host = 'plants.ensembl.org'))" to see all available datasets.}
    \item{plot}{Logical, if TRUE, a dot plot will be generated to represent the significance of each GO term.}
 }
 
@@ -54,7 +54,7 @@ runTopGO(geneID, statistic = "fisher", algorithm = "elim",
   GTOGO <- biomaRt::getBM(attributes = c( "ensembl_gene_id", "go_id"), mart = mart)
   GTOGO <- GTOGO[GTOGO$go_id != '', ]
   all.genes <- sort(unique(as.character(GTOGO$ensembl_gene_id)))
-  geneID <- samples(all.genes, 100)
+  geneID <- sample(all.genes, 100)
   results <- runTopGO(geneID = geneID)
 }
 }
