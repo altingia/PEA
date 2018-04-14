@@ -29,7 +29,7 @@ Docker installation and start
 -   On Ubuntu:
 1.  Go to <https://download.docker.com/linux/ubuntu/dists/>, choose your Ubuntuversion, browse to *pool/stable* and choose *amd64*, *armhf, ppc64el* or *s390x*. Download the DEB file for the Docker version you want to install;
 2.  Install Docker, supposing that the DEB file is download into following path:`/home/docker-ce<version-XXX>~ubuntu_amd64.deb`
->    \$ sudo dpkg -i /home/docker-ce-<version-XXX>~ubuntu_amd64.deb    
+>    \$ sudo dpkg -i /home/docker-ce<version-XXX>~ubuntu_amd64.deb    
 >    \$ sudo apt-get install -f
 
  Verify if Docker is installed correctly 
