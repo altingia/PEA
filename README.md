@@ -1,31 +1,31 @@
-# **PEA**: An integrated R toolkit for plant epitranscriptome analysis </br>
+# ___**PEA**: An integrated R toolkit for plant epitranscriptome analysis___ </br>
 ![](https://halobi.com/wp-content/uploads/2016/08/r_logo.png "R logo")
 ![](https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSvCvZWbl922EJkjahQ5gmTpcvsYr3ujQBpMdyX-YG99vGWfTAmfw "linux logo")
 ![](https://tctechcrunch2011.files.wordpress.com/2014/06/apple_topic.png?w=220)
 **Brief introduction:**
-PEA is a docker-based integrated R toolkit that aims to facilitate the plant epitranscriptome analysis. This toolkit contains a comprehensive collection of functions required for read mapping, CMR calling, motif scanning and discovery, and gene functional enrichment analysis. PEA also takes advantage of machine learning technologies for transcriptome-scale CMR prediction, with high prediction accuracy, using the Positive Samples Only Learning algorithm, which addresses the two-class classification problem by using only positive samples (CMRs), in the absence of negative samples (non-CMRs). Hence PEA is a versatile epitranscriptome analysis pipeline covering CMR calling, prediction, and annotation.
+PEA is a docker-based integrated R toolkit that aims to facilitate the plant epitranscriptome analysis. This toolkit contains a comprehensive collection of functions required for read mapping, CMR calling, motif scanning and discovery, and gene functional enrichment analysis. PEA also takes advantage of machine learning technologies for transcriptome-scale CMR prediction, with high prediction accuracy, using the Positive Samples Only Learning algorithm, which addresses the two-class classification problem by using only positive samples (CMRs), in the absence of negative samples (non-CMRs). Hence PEA is a versatile epitranscriptome analysis pipeline covering CMR calling, prediction, and annotation.</br>
 
 ## PEA installation ##
 
 ### Docker installation and start ###
 
 #### For Windows (Test on Windows 10 Enterprise version): ####
-#### 1.  Download the installer from following URL: <https://download.docker.com/win/stable/Docker%20for%20Windows%20Installer.exe>;
-2.  Double click the EXE file to open it;
-3.  Follow the wizard instruction and complete installation;
-4.  Search docker, select **Docker for Windows** in the search results and click
-    it.
--   For Mac OS X (Test on macOS Sierra version 10.12.6 and macOS High Sierra version 10.13.3):
-1.  Download the installer from following URL:<https://download.docker.com/mac/stable/Docker.dmg>;
-2.  Double click the DMG file to open it;
-3.  Drag the docker into Applications and complete installation;
-4.  Start docker from Launchpad by click it.
--   For Ubuntu (Test on Ubuntu 14.04 LTS and Ubuntu 16.04 LTS):
-1.  Go to <https://download.docker.com/linux/ubuntu/dists/>, choose your Ubuntuversion, browse to *pool/stable* and choose *amd64*, *armhf, ppc64el* or *s390x*. Download the DEB file for the Docker version you want to install;
-2.  Install Docker, supposing that the DEB file is download into following path:`/home/docker-ce<version-XXX>~ubuntu_amd64.deb`
->    \$ sudo dpkg -i `/home/docker-ce<version-XXX>~ubuntu_amd64.deb`      
->    \$ sudo apt-get install -f
-
+* Download [Docker](<https://download.docker.com/win/stable/Docker%20for%20Windows%20Installer.exe>) for windows </br>
+* Double click the EXE file to open it;
+* Follow the wizard instruction and complete installation;
+* Search docker, select ___Docker for Windows___ in the search results and clickit.
+#### For Mac OS X (Test on macOS Sierra version 10.12.6 and macOS High Sierra version 10.13.3): ####
+* Download [Docker](<https://download.docker.com/mac/stable/Docker.dmg>) for Mac os <br>
+* Double click the DMG file to open it;
+* Drag the docker into Applications and complete installation;
+* Start docker from Launchpad by click it.
+#### For Ubuntu (Test on Ubuntu 14.04 LTS and Ubuntu 16.04 LTS): ####
+* Go to <https://download.docker.com/linux/ubuntu/dists/>, choose your Ubuntuversion, browse to *pool/stable* and choose *amd64*, *armhf, ppc64el* or *s390x*. Download the DEB file for the Docker version you want to install;
+* Install Docker, supposing that the DEB file is download into following path:___`/home/docker-ce<version-XXX>~ubuntu_amd64.deb`___ </br>
+```shell
+sudo dpkg -i `/home/docker-ce<version-XXX>~ubuntu_amd64.deb`      
+sudo apt-get install -f
+```
  Verify if Docker is installed correctly 
 ----------------------------------------
 
