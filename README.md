@@ -245,7 +245,7 @@ Once PEA is installed successfully, type the following command to start PEA:
    The source codes of PEA are freely available at [PEA](<https://github.com/cma2015/PEA>)
 ## How to access help ##
 * If users encounter any bugs or issues, feel free to leave a message at Github [issues](<https://github.com/cma2015/PEA/issues>). We will try our best to deal with all issues as soon as possible.
-* In addition, if any suggestions are available, feel free to contact: Zhai JJ <zhaijingjing603@gmail.com> or Ma Chuang <chuangma2006@gmail.com>
+* In addition, if any suggestions are available, feel free to contact: __Zhai JJ__ <zhaijingjing603@gmail.com> or __Ma Chuang___ <chuangma2006@gmail.com>
 ## References ##
   * Chen, W.*, et al.* Identifying N6-methyladenosine sites in the Arabidopsis
    thaliana transcriptome. *Mol Genet Genomics* 2016;291(6):2225-2229.  
