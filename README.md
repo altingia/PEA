@@ -20,25 +20,23 @@ PEA is a docker-based integrated R toolkit that aims to facilitate the plant epi
 * Drag the docker into Applications and complete installation;
 * Start docker from Launchpad by click it.
 #### For Ubuntu (Test on Ubuntu 14.04 LTS and Ubuntu 16.04 LTS): ####
-* Go to <https://download.docker.com/linux/ubuntu/dists/>, choose your Ubuntuversion, browse to *pool/stable* and choose *amd64*, *armhf, ppc64el* or *s390x*. Download the DEB file for the Docker version you want to install;
-* Install Docker, supposing that the DEB file is download into following path:___`/home/docker-ce<version-XXX>~ubuntu_amd64.deb`___ </br>
+* Go to [Docker] (<https://download.docker.com/linux/ubuntu/dists/>), choose your Ubuntuversion, browse to ___pool/stable___ and choose ___amd64, armhf, ppc64el or s390x.____ Download the ___DEB___ file for the Docker version you want to install;
+* Install Docker, supposing that the DEB file is download into following path:___"/home/docker-ce<version-XXX>~ubuntu_amd64.deb"___ </br>
 ```bash
-sudo dpkg -i `/home/docker-ce<version-XXX>~ubuntu_amd64.deb`      
-sudo apt-get install -f
+> $ sudo dpkg -i `/home/docker-ce<version-XXX>~ubuntu_amd64.deb`      
+> $ sudo apt-get install -f
 ```
- Verify if Docker is installed correctly 
+ ### Verify if Docker is installed correctly ### 
 ----------------------------------------
 
-   Once Docker installation is completed, we can run **hello-world** image to verify if Docker is installed correctly. Open terminal in Mac OS X and Linux operating system and open CMD for Windows operating system, then type the following command:
-
->   \$ docker run hello-world
-
+   Once Docker installation is completed, we can run ____hello-world____ image to verify if Docker is installed correctly. Open terminal in Mac OS X and Linux operating system and open CMD for Windows operating system, then type the following command:
+```bash
+> $ docker run hello-world
+```
    **Note:** root permission is required for Linux operating system.
 
 
--   **Note:** considering that differences between different computers may
-    exist, please refer to official installation manual (
-    *https://docs.docker.com/install)* if instructions above don’t work.
+   **Note:** considering that differences between different computers may exist, please refer to [official installation manual] (https://docs.docker.com/install)if instructions above don’t work.
 
 
 PEA installation from Docker Hub
