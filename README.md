@@ -4,11 +4,8 @@
 ![](https://tctechcrunch2011.files.wordpress.com/2014/06/apple_topic.png?w=220) </br>
 **Brief introduction:**
 PEA is a docker-based integrated R toolkit that aims to facilitate the plant epitranscriptome analysis. This toolkit contains a comprehensive collection of functions required for read mapping, CMR calling, motif scanning and discovery, and gene functional enrichment analysis. PEA also takes advantage of machine learning technologies for transcriptome-scale CMR prediction, with high prediction accuracy, using the Positive Samples Only Learning algorithm, which addresses the two-class classification problem by using only positive samples (CMRs), in the absence of negative samples (non-CMRs). Hence PEA is a versatile epitranscriptome analysis pipeline covering CMR calling, prediction, and annotation.</br>
-
 ## PEA installation ##
-
 ### Docker installation and start ###
-
 #### For Windows (Test on Windows 10 Enterprise version): ####
 * Download [Docker](<https://download.docker.com/win/stable/Docker%20for%20Windows%20Installer.exe>) for windows </br>
 * Double click the EXE file to open it;
@@ -28,7 +25,6 @@ PEA is a docker-based integrated R toolkit that aims to facilitate the plant epi
 ```
  ### Verify if Docker is installed correctly ### 
 ----------------------------------------
-
    Once Docker installation is completed, we can run ____hello-world____ image to verify if Docker is installed correctly. Open terminal in Mac OS X and Linux operating system and open CMD for Windows operating system, then type the following command:
 ```bash
 > $ docker run hello-world
@@ -38,7 +34,6 @@ PEA is a docker-based integrated R toolkit that aims to facilitate the plant epi
 
 ### PEA installation from Docker Hub ###
 --------------------------------
-
   For Mac OS X and Linux operating systems, open the terminal, for Windows operating system, open CMD. Typing the following command:
 ```bash
 # Pull PEA from Docker PEA  
@@ -56,9 +51,8 @@ Once PEA is installed successfully, type the following command to start PEA:
 >  setwd("/home/data/")  
 ```
 **Important:** the directory (___`/home/data/`____) is a virtual directory in PEA Docker image. In order to use private dataset more easily, the parameter “-v” is strongly recommended to mount host directory of dataset to PEA image.  
-
 ### CMR calling ### 
-============
+----------------------------------------------------------
 #### Reads mapping using tophat ####
 ```R
 #Loading sample data for reads mapping  
@@ -78,7 +72,6 @@ Once PEA is installed successfully, type the following command to start PEA:
 
 #### Peak calling methods implemented in PEA ####
 ---------------------------------------
-
    PEA integrated five peak calling methods including “SlidingWindow”,
    “exomePeak”, “MetPeak”, “MACS2” and “BayesPeak”. each peak calling method
    can be easily invoked by specifying parameter “method” in “CMRCalling”
@@ -98,25 +91,22 @@ Once PEA is installed successfully, type the following command to start PEA:
     ChIP-seq dataset using Bayesian hidden Markov model and Markov chain Monte
     Carlo algorithms.     
    **Summary:** Both “SlidingWindow” and “exomePeak” are sliding window-based method to detect significant enriched regions and perform well on CMR  prediction, while “MACS2” and “BayesPeak” are peak calling methods designed for ChIP-seq dataset, but “MACS2” can strictly control false positives, in contrast, BayePeak is weaker in controlling false positives. In addition, method “exomePeak”, “MeTPeak” and “MACS2” can accept biological replicates using statistical methods.
-
 * Peak calling using SlindingWindow ###
 ```R
-#Loading sample data for peak calling  
+# Loading sample data for peak calling  
 >  input.bam <- system.file("extdata/chr1_input_test.bam", package = "PEA")     
 >  RIP.bam <- system.file("extdata/chr1_RIP_test.bam", package = "PEA")      
 >  refGenome <- system.file("extdata/chromosome1.fa", package = "PEA")      
 >  GTF <- system.file("extdata/chromosome1.gtf", package = "PEA")      
 
--  Peak calling using sliding window-based method  
+# Peak calling using sliding window-based method  
 >  cmrMat <- CMRCalling(CMR = "m6A", IPBAM = RIP.bam, inputBAM = input.bam,   
 >  method = "SlidingWindow", mappedInput = 17472,    
 >  mappedRIP = 20072, refGenome = refGenome)   
-
-#Save the results into working directory  
+# Save the results into working directory  
 > write.table(cmrMat, file = "SlidingWindow_peaks.txt", sep = "\\t", quote = F, row.names = F, col.names = F)  
 ```
 **Note:** parameters "mappedInput" and "mappedRIP" represent the number of reads aligned to reference genome in input and RIP samples, respectively.
-
 * Peak calling using exomePeak
 ```R
 >  cmrMat <- CMRCalling(CMR = "m6A", method = "exomePeak", IPBAM = RIP.bam, inputBAM = input.bam, GTF = GTF)  
@@ -141,10 +131,9 @@ Once PEA is installed successfully, type the following command to start PEA:
 >  write.table(cmrMat, file = "BayesPeak_peaks.txt", sep = "\\t", quote = F, row.names = F, col.names = F)  
 ```
 ### CMR prediction ###
-==============
+-------------------------------
 #### Samples organization ####
---------------------
- In order to be recognized by the ML-based classification models, PEA can transform each sample (L-nt flanking sequence centered on m6A or non-m6A modifications) into a (L*4+20+22)-dimensional vector which including L*4 binary-based features, 20 k-mer based features (k = 1 and k = 2) and 22 PseDNC-based features. 
+   <br> In order to be recognized by the ML-based classification models, PEA can transform each sample (L-nt flanking sequence centered on m6A or non-m6A modifications) into a (L*4+20+22)-dimensional vector which including L*4 binary-based features, 20 k-mer based features (k = 1 and k = 2) and 22 PseDNC-based features.</br>
 ```R
 # Convert genomic position to cDNA position  
 >  GTF <- system.file("extdata/chromosome1.gtf", package = "PEA")  
@@ -161,28 +150,27 @@ Once PEA is installed successfully, type the following command to start PEA:
 ```    
 #### Sample vectorization with three feature encoding schemes ####
 --------------------------------------------------------
-
    In order to be recognized by the ML-based classification models, PEA can
    transform each sample (*L*-nt flanking sequence centered on m6A or non-m6A
    modifications) into a (*L*\*4+20+22)-dimensional vector which including
    *L*\*4 *binary*-based features, 20 *k-mer* based features (*k* = 1 and *k* =
    2) and 22 PseDNC-based features.
-
--  Extracting flanking sequence of 101-nt centered on m6A or non-m6A  
+``` R
+# Extracting flanking sequence of 101-nt centered on m6A or non-m6A  
 >  positives <- posSamples\$positives  
 >  posSeq <- extractSeqs(RNAseq = cDNA, samples = positives, seqLen = 101)  
 >  unlabelSeq <- extractSeqs(RNAseq = cDNA, samples = unlabelSamples, seqLen = 101)  
 
--  Feature encoding using *binary*, *k-mer* and *PseDNC* encoding schemes  
+# Feature encoding using *binary*, *k-mer* and *PseDNC* encoding schemes  
 >  posFeatureMat <- featureEncoding(RNAseq = posSeq)  
 >  unlabelFeatureMat <- featureEncoding(RNAseq = unlabelSeq)  
 >  featureMat <- rbind(posFeatureMat, unlabelFeatureMat)  
-
+```
 #### Construction of a CRM predictor using random forest (RF) and PSOL algorithm
 ---------------------------------------------------------------------------
-   The RF is a powerful ML algorithm that has been widely used for the binary classification problems in bioinformatics and computational biology (Cui, et al., 2015; Ma, et al., 2014; Touw, et al., 2013). To build a RF-based classifier (predictor), positive samples and negative samples are required to be specified by the user. Existing m6A prediction approach typically use the known m6A modifications as the positive sample set and the unlabeled samples as the negative sample set to build predictors to identify new m6A modifications from unlabeled samples (Chen, et al., 2016; Zhou, et al., 2016). Such kind of m6A predictors is actually built from a noisy negative sample set. As a result, the predictors do not perform well as they could in identifying new m6A modifications. To address this challenge, PSOL algorithm was introduced into the PEA package, which can be used to build an ML-based binary classification system with high prediction accuracy with only positive samples and without pre-specified negative samples. This algorithm has been previously applied to predict abiotic stress-response genes and genomic loci encoding functional noncoding RNAs (Ma, et al., 2014; Wang, et al., 2006). </br>
-To implement the PSOL algorithm, an initial negative sample set with the same size as the positive sample set was firstly constructed, which contained samples that were selected from the unlabeled sample set based on the maximal Euclidean distances to positive samples. The negative sample set was then expanded iteratively using the RF-based classifier until the designated iteration number was reached. In each iteration, a ten-fold cross-validation method and the receiver operating characteristic (ROC) curve analysis were performed to evaluate the predictive performance of current classifier in distinguishing between positive samples and negative samples. In order to get the optimal RF classifier, the RF classifier with max AUC value was selected from the ten-fold cross-validation and was subsequently used for scoring the unlabeled samples with a user-adjustable threshold (TPR = 0.995) to ensure a large fraction of positive samples can be correctly identified.</br>
-    In each iteration, an m6A predictor was built using the RF algorithm with positive samples and selected negative samples. PSOL algorithm can be easily implemented using the function “PSOL” in the PEA package.</br>
+   <br>The RF is a powerful ML algorithm that has been widely used for the binary classification problems in bioinformatics and computational biology (Cui, et al., 2015; Ma, et al., 2014; Touw, et al., 2013). To build a RF-based classifier (predictor), positive samples and negative samples are required to be specified by the user. Existing m6A prediction approach typically use the known m6A modifications as the positive sample set and the unlabeled samples as the negative sample set to build predictors to identify new m6A modifications from unlabeled samples (Chen, et al., 2016; Zhou, et al., 2016). Such kind of m6A predictors is actually built from a noisy negative sample set. As a result, the predictors do not perform well as they could in identifying new m6A modifications. To address this challenge, PSOL algorithm was introduced into the PEA package, which can be used to build an ML-based binary classification system with high prediction accuracy with only positive samples and without pre-specified negative samples. This algorithm has been previously applied to predict abiotic stress-response genes and genomic loci encoding functional noncoding RNAs (Ma, et al., 2014; Wang, et al., 2006). </br>
+    <br>To implement the PSOL algorithm, an initial negative sample set with the same size as the positive sample set was firstly constructed, which contained samples that were selected from the unlabeled sample set based on the maximal Euclidean distances to positive samples. The negative sample set was then expanded iteratively using the RF-based classifier until the designated iteration number was reached. In each iteration, a ten-fold cross-validation method and the receiver operating characteristic (ROC) curve analysis were performed to evaluate the predictive performance of current classifier in distinguishing between positive samples and negative samples. In order to get the optimal RF classifier, the RF classifier with max AUC value was selected from the ten-fold cross-validation and was subsequently used for scoring the unlabeled samples with a user-adjustable threshold (TPR = 0.995) to ensure a large fraction of positive samples can be correctly identified.</br>
+    <br>In each iteration, an m6A predictor was built using the RF algorithm with positive samples and selected negative samples. PSOL algorithm can be easily implemented using the function “PSOL” in the PEA package.</br>
 ```R
 # Creating a directory to save psol results  
 >  dir.create("./psol")  
