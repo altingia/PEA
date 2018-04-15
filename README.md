@@ -20,7 +20,7 @@ PEA is a docker-based integrated R toolkit that aims to facilitate the plant epi
 * Drag the docker into Applications and complete installation;
 * Start docker from Launchpad by click it.
 #### For Ubuntu (Test on Ubuntu 14.04 LTS and Ubuntu 16.04 LTS): ####
-* Go to [Docker] (<https://download.docker.com/linux/ubuntu/dists/>), choose your Ubuntuversion, browse to ___pool/stable___ and choose ___amd64, armhf, ppc64el or s390x.____ Download the ___DEB___ file for the Docker version you want to install;
+* Go to [Docker](<https://download.docker.com/linux/ubuntu/dists/>), choose your Ubuntuversion, browse to ___pool/stable___ and choose ___amd64, armhf, ppc64el or s390x.____ Download the ___DEB___ file for the Docker version you want to install;
 * Install Docker, supposing that the DEB file is download into following path:___"/home/docker-ce<version-XXX>~ubuntu_amd64.deb"___ </br>
 ```bash
 > $ sudo dpkg -i `/home/docker-ce<version-XXX>~ubuntu_amd64.deb`      
@@ -33,18 +33,16 @@ PEA is a docker-based integrated R toolkit that aims to facilitate the plant epi
 ```bash
 > $ docker run hello-world
 ```
-   **Note:** root permission is required for Linux operating system.
+   **<font color =red>Note</font>:** root permission is required for Linux operating system.
 
 
-   **Note:** considering that differences between different computers may exist, please refer to [official installation manual] (https://docs.docker.com/install)if instructions above don’t work.
+   **<font color =red>Note</font>:** considering that differences between different computers may exist, please refer to [official installation manual](https://docs.docker.com/install) if instructions above don’t work.
 
 
-PEA installation from Docker Hub
+### PEA installation from Docker Hub ###
 --------------------------------
 
-  For Mac OS X and Linux operating systems, open the terminal, for Windows
-  operating system, open CMD. Typing the following command:
-
+  For Mac OS X and Linux operating systems, open the terminal, for Windows operating system, open CMD. Typing the following command:
 -  Pull PEA from Docker PEA  
 >  \$ docker pull malab/pea 
 
