@@ -34,38 +34,34 @@ PEA is a docker-based integrated R toolkit that aims to facilitate the plant epi
 > $ docker run hello-world
 ```
    **<font color =red>Note</font>:** root permission is required for Linux operating system.
-
-
    **<font color =red>Note</font>:** considering that differences between different computers may exist, please refer to [official installation manual](https://docs.docker.com/install) if instructions above don’t work.
-
 
 ### PEA installation from Docker Hub ###
 --------------------------------
 
   For Mac OS X and Linux operating systems, open the terminal, for Windows operating system, open CMD. Typing the following command:
--  Pull PEA from Docker PEA  
->  \$ docker pull malab/pea 
-
-Quickly start
+```bash
+# Pull PEA from Docker PEA  
+> $ docker pull malab/pea 
+```
+## Quickly start ##
 -------------
-
-  Once PEA is installed successfully, type the following command to start PEA:  
->  \$ docker run -it -v **/host directory of dataset**:/home/data malab/pea R  
-
-**Note:** Supposing that users’ private dataset is located in directory `/home/test`, then change the bold words above (**/host directory of dataset**) to host directory (`/home/test`)  
-
+Once PEA is installed successfully, type the following command to start PEA:  
+```bash
+> $ docker run -it -v **/host directory of dataset**:/home/data malab/pea R  
+```
+**Note:** Supposing that users’ private dataset is located in directory ___`/home/test`____, then change the bold words above (____/host directory of dataset____) to host directory (____`/home/test`___)  
+```R
 >  library(PEA)  
 >  setwd("/home/data/")  
+```
+**Important:** the directory (___`/home/data/`____) is a virtual directory in PEA Docker image. In order to use private dataset more easily, the parameter “-v” is strongly recommended to mount host directory of dataset to PEA image.  
 
-**Important:** the directory (`/home/data/`) is a virtual directory in PEA Docker image. In order to use private dataset more easily, the parameter “-v” is strongly recommended to mount host directory of dataset to PEA image.  
-
-CMR calling 
+### CMR calling ### 
 ============
-
-Reads mapping using tophat
---------------------------
-
--  Loading sample data for reads mapping  
+#### Reads mapping using tophat ####
+```R
+#Loading sample data for reads mapping  
 >  fq <-  system.file("extdata/test.fq", package = "PEA")  
 >  referenceGenome <- system.file("extdata/chromosome1.fa", package = "PEA")
 
@@ -75,12 +71,12 @@ Reads mapping using tophat
 
 -  reads mapping using tophat with 2 threads  
 >  test.bam <- readMapping(alignment = "tophat", fq = fq,refGenome = referenceGenome, paired = F, ... = "-p 2")  
-
+```
    **Note:** other alignment toolkits such as Bowtie, Bowtie 2, TopHat 2, Hisat
    and Hisat can be easily invoked by specifying “alignment” parameter in
    “readMapping” function.
 
-Peak calling methods implemented in PEA
+#### Peak calling methods implemented in PEA ####
 ---------------------------------------
 
    PEA integrated five peak calling methods including “SlidingWindow”,
@@ -106,9 +102,9 @@ Peak calling methods implemented in PEA
     
    **Summary:** Both “SlidingWindow” and “exomePeak” are sliding window-based method to detect significant enriched regions and perform well on CMR  prediction, while “MACS2” and “BayesPeak” are peak calling methods designed for ChIP-seq dataset, but “MACS2” can strictly control false positives, in contrast, BayePeak is weaker in controlling false positives. In addition, method “exomePeak”, “MeTPeak” and “MACS2” can accept biological replicates using statistical methods.
 
-### Peak calling using SlindingWindow
-
--  Loading sample data for peak calling  
+* Peak calling using SlindingWindow ###
+```R
+#Loading sample data for peak calling  
 >  input.bam <- system.file("extdata/chr1_input_test.bam", package = "PEA")     
 >  RIP.bam <- system.file("extdata/chr1_RIP_test.bam", package = "PEA")      
 >  refGenome <- system.file("extdata/chromosome1.fa", package = "PEA")      
@@ -119,55 +115,54 @@ Peak calling methods implemented in PEA
 >  method = "SlidingWindow", mappedInput = 17472,    
 >  mappedRIP = 20072, refGenome = refGenome)   
 
--  Save the results into working directory  
+#Save the results into working directory  
 > write.table(cmrMat, file = "SlidingWindow_peaks.txt", sep = "\\t", quote = F, row.names = F, col.names = F)  
-
+```
 **Note:** parameters "mappedInput" and "mappedRIP" represent the number of reads aligned to reference genome in input and RIP samples, respectively.
 
-### Peak calling using exomePeak
-
+* Peak calling using exomePeak
+```R
 >  cmrMat <- CMRCalling(CMR = "m6A", method = "exomePeak", IPBAM = RIP.bam, inputBAM = input.bam, GTF = GTF)  
 >  write.table(cmrMat, file = "exomePeak_peaks.txt", sep = "\\t", quote = F, row.names = F, col.names = F)  
-
-### Peak calling using MeTPeak
- 
+```
+* Peak calling using MeTPeak
+```R
 >  cmrMat <- CMRCalling(CMR = "m6A", method = "MetPeak", IPBAM = RIP.bam,  inputBAM = input.bam, GTF = GTF)  
 >  write.table(cmrMat, file = "MetPeak_peaks.txt", sep = "\\t",quote = F, row.names = F, col.names = F)  
-
-### Peak calling using MACS2
- 
+```
+* Peak calling using MACS2
+```R
 >  cmrMat <- CMRCalling(CMR = "m6A", method = "MACS2", IPBAM = RIP.bam, inputBAM = input.bam, GTF = GTF, ...="--nomodel")  
-
+```
 **Note:** futher parameters recognized by MACS2 can be specified in "..."  
+```R
 >  write.table(cmrMat, file = "MACS2_peaks.txt", sep = "\\t", quote = F, row.names = F, col.names = F)  
-
-###  Peak calling using BayesPeak  
-
+```
+* Peak calling using BayesPeak  
+```R
 >  cmrMat <- CMRCalling(CMR = "m6A", method = "BayesPeak", IPBAM = RIP.bam, inputBAM = input.bam, GTF = GTF)  
 >  write.table(cmrMat, file = "BayesPeak_peaks.txt", sep = "\\t", quote = F, row.names = F, col.names = F)  
-
-CMR prediction
+```
+### CMR prediction ###
 ==============
-
-Samples organization
+#### Samples organization ####
 --------------------
-
  In order to be recognized by the ML-based classification models, PEA can transform each sample (L-nt flanking sequence centered on m6A or non-m6A modifications) into a (L*4+20+22)-dimensional vector which including L*4 binary-based features, 20 k-mer based features (k = 1 and k = 2) and 22 PseDNC-based features. 
-
--  Convert genomic position to cDNA position  
+```R
+#Convert genomic position to cDNA position  
 >  GTF <- system.file("extdata/chromosome1.gtf", package = "PEA")  
 >  peaks <- G2T(bedPos = cmrMat, GTF = GTF)  
 
--  Searching RRACH motif from cDNA sequence  
+#Searching RRACH motif from cDNA sequence  
 >  cDNA <- system.file("extdata/chr1_cdna.fa", package = "PEA")    
 >  motifPos <- searchMotifPos(sequence = cDNA)  
 
--  Find confident positive samples and unlabel samples  
+#Find confident positive samples and unlabel samples  
 >  posSamples <- findConfidentPosSamples(peaks = peaks, motifPos = motifPos)  
 >  unlabelSamples <- findUnlabelSamples(cDNAID = posSamples\$cDNAID, motifPos = motifPos,
     posSamples = posSamples\$positives)  
-    
-Sample vectorization with three feature encoding schemes
+```    
+#### Sample vectorization with three feature encoding schemes ####
 --------------------------------------------------------
 
    In order to be recognized by the ML-based classification models, PEA can
@@ -186,16 +181,12 @@ Sample vectorization with three feature encoding schemes
 >  unlabelFeatureMat <- featureEncoding(RNAseq = unlabelSeq)  
 >  featureMat <- rbind(posFeatureMat, unlabelFeatureMat)  
 
-Construction of a CRM predictor using random forest (RF) and PSOL algorithm
+#### Construction of a CRM predictor using random forest (RF) and PSOL algorithm
 ---------------------------------------------------------------------------
- <br>
-   The RF is a powerful ML algorithm that has been widely used for the binary classification problems in bioinformatics and computational biology (Cui, et al., 2015; Ma, et al., 2014; Touw, et al., 2013). To build a RF-based classifier (predictor), positive samples and negative samples are required to be specified by the user. Existing m6A prediction approach typically use the known m6A modifications as the positive sample set and the unlabeled samples as the negative sample set to build predictors to identify new m6A modifications from unlabeled samples (Chen, et al., 2016; Zhou, et al., 2016). Such kind of m6A predictors is actually built from a noisy negative sample set. As a result, the predictors do not perform well as they could in identifying new m6A modifications. To address this challenge, PSOL algorithm was introduced into the PEA package, which can be used to build an ML-based binary classification system with high prediction accuracy with only positive samples and without pre-specified negative samples. This algorithm has been previously applied to predict abiotic stress-response genes and genomic loci encoding functional noncoding RNAs (Ma, et al., 2014; Wang, et al., 2006). 
-   <br>
-To implement the PSOL algorithm, an initial negative sample set with the same size as the positive sample set was firstly constructed, which contained samples that were selected from the unlabeled sample set based on the maximal Euclidean distances to positive samples. The negative sample set was then expanded iteratively using the RF-based classifier until the designated iteration number was reached. In each iteration, a ten-fold cross-validation method and the receiver operating characteristic (ROC) curve analysis were performed to evaluate the predictive performance of current classifier in distinguishing between positive samples and negative samples. In order to get the optimal RF classifier, the RF classifier with max AUC value was selected from the ten-fold cross-validation and was subsequently used for scoring the unlabeled samples with a user-adjustable threshold (TPR = 0.995) to ensure a large fraction of positive samples can be correctly identified.
-<br>
-In each iteration, an m6A predictor was built using the RF algorithm with positive samples and selected negative samples. PSOL algorithm can be easily implemented using the function “PSOL” in the PEA package.
-<br>
-
+   The RF is a powerful ML algorithm that has been widely used for the binary classification problems in bioinformatics and computational biology (Cui, et al., 2015; Ma, et al., 2014; Touw, et al., 2013). To build a RF-based classifier (predictor), positive samples and negative samples are required to be specified by the user. Existing m6A prediction approach typically use the known m6A modifications as the positive sample set and the unlabeled samples as the negative sample set to build predictors to identify new m6A modifications from unlabeled samples (Chen, et al., 2016; Zhou, et al., 2016). Such kind of m6A predictors is actually built from a noisy negative sample set. As a result, the predictors do not perform well as they could in identifying new m6A modifications. To address this challenge, PSOL algorithm was introduced into the PEA package, which can be used to build an ML-based binary classification system with high prediction accuracy with only positive samples and without pre-specified negative samples. This algorithm has been previously applied to predict abiotic stress-response genes and genomic loci encoding functional noncoding RNAs (Ma, et al., 2014; Wang, et al., 2006). </br>
+To implement the PSOL algorithm, an initial negative sample set with the same size as the positive sample set was firstly constructed, which contained samples that were selected from the unlabeled sample set based on the maximal Euclidean distances to positive samples. The negative sample set was then expanded iteratively using the RF-based classifier until the designated iteration number was reached. In each iteration, a ten-fold cross-validation method and the receiver operating characteristic (ROC) curve analysis were performed to evaluate the predictive performance of current classifier in distinguishing between positive samples and negative samples. In order to get the optimal RF classifier, the RF classifier with max AUC value was selected from the ten-fold cross-validation and was subsequently used for scoring the unlabeled samples with a user-adjustable threshold (TPR = 0.995) to ensure a large fraction of positive samples can be correctly identified.</br>
+    In each iteration, an m6A predictor was built using the RF algorithm with positive samples and selected negative samples. PSOL algorithm can be easily implemented using the function “PSOL” in the PEA package.</br>
+```R
 -  Creating a directory to save psol results  
 >  dir.create("./psol")  
 >  psolResDic <- "./psol/"  
@@ -214,26 +205,25 @@ In each iteration, an m6A predictor was built using the RF algorithm with positi
 > pdf("cross_validation.pdf", height = 5, width = 5)  
 > plotROC(cvRes = cvRes)  
 > dev.off()  
-
-CMR prediction using predictor generated by PSOL
+```
+#### CMR prediction using predictor generated by PSOL ####
 ------------------------------------------------
-
   After performing PSOL, an m6A predictor would be generated in the “psolRes”
    object, users can easily predict novel candidate CMRs by following command.
-
--  Predicting novel candidate m6A modifications  
+```R
+# Predicting novel candidate m6A modifications  
 >  predSeq <- system.file("extdata/test_pred.fa", package = "PEA")  
 >  predMat <- predCMR(predSeq, model = psolRes\$model)  
-
-CMR annotation
+```
+### CMR annotation ###
 ==============
 
   PEA also provide CMR annotation to provide insights into spatial and functional associations of CMRs through function “CMRAnnotation”. Using this function, the manner of distribution of CMRs in the transcriptome is statistically analyzed, including the spatial distribution of CMRs, and the regions of enrichment of CMRs within transcripts. In addition, motif scanning and de novo motif discovery are also provided to investigate the potential regulatory mechanisms leading by CMRs. Moreover, gene functional (Gene Ontology) enrichment analysis is also performed to characterize the enriched functions of CMR-corresponding transcripts using R package “topGO”
 
-CMR location distribution
+#### CMR location distribution ####
 -------------------------
-
-Loading sample data  
+```R
+# Loading sample data  
 >  GTF <- system.file("extdata/chromosome1.gtf", package = "PEA")  
 >  input.bam <- system.file("extdata/chr1_input_test.bam", package = "PEA")   
 >  RIP.bam <- system.file("extdata/chr1_RIP_test.bam", package = "PEA")    
@@ -248,10 +238,9 @@ Loading sample data
 > pdf("CMR_location.pdf", height = 10, width = 10)  
 > results <- CMRAnnotation(cmrMat = cmrMat, SNR = F, UTRMat = UTRMat,  genomic = T, annotation = "location", GTF = GTF, RNAseq = cDNA)   
 > dev.off()  
-
-Motif scanning and discovery
-----------------------------
-
+```
+#### Motif scanning and discovery ####
+```R
 -  Search motif  
 >  testSeq <- system.file("extdata/test.fa", package = "PEA")    
 >  pdf("motifScan.pdf", height = 5, width = 5)    
@@ -262,28 +251,24 @@ Motif scanning and discovery
 >  pdf("motifDetect.pdf", height = 5, width = 5)    
 >  results.detect <- CMRAnnotation(cmrSeq = testSeq, annotation = "motifDetect")    
 > dev.off()    
-
-Functional enrichment analysis of CMR corresponded genes
---------------------------------------------------------
-
+```
+#### Functional enrichment analysis of CMR corresponded genes ####
+```R
 -  GO enrichment analysis  
 >  library(topGO)    
 >  peaks <- G2T(bedPos = cmrMat, GTF = GTF)    
 >  enrichment <- CMRAnnotation(cmrMat = peaks, GTF = GTF, annotation = "GO", topNodes = 20, dataset = "athaliana_eg_gene")
-
-Source codes availability
-=========================
-
-   The source codes of PEA are freely available at <https://github.com/cma2015/PEA>
-
-How to access help
+```
+## Source codes availability ##
+=======================
+   The source codes of PEA are freely available at [PEA](<https://github.com/cma2015/PEA>)
+## How to access help ##
 ==================
+* If users encounter any bugs or issues, feel free to leave a message at Github [issues](<https://github.com/cma2015/PEA/issues>). We will try our best to deal with all issues as soon as possible.
 
--   If users encounter any bugs or issues, feel free to leave a message at Github issues: <https://github.com/cma2015/PEA/issues>. We will try our best to deal with all issues as soon as possible.
+* In addition, if any suggestions are available, feel free to contact: Zhai JJ <zhaijingjing603@gmail.com> or Ma Chuang <chuangma2006@gmail.com>
 
--   In addition, if any suggestions are available, feel free to contact: <zhaijingjing603@gmail.com> or <chuangma2006@gmail.com>
-
-References
+## References ##
 ==========
 
   Chen, W.*, et al.* Identifying N6-methyladenosine sites in the Arabidopsis
