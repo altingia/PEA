@@ -99,7 +99,11 @@ refGenome <- system.file("extdata/chromosome1.fa", package = "PEA")
 GTF <- system.file("extdata/chromosome1.gtf", package = "PEA")      
 
 # Peak calling using sliding window-based method  
-cmrMat <- CMRCalling(CMR = "m6A", IPBAM = RIP.bam, inputBAM = input.bam, method = "SlidingWindow", mappedInput = 17472,   mappedRIP = 20072, refGenome = refGenome)   
+cmrMat <- CMRCalling(CMR = "m6A", IPBAM = RIP.bam, inputBAM = input.bam, method = "SlidingWindow", mappedInput = 17472,   mappedRIP = 20072, refGenome = refGenome)
+# Note: one can also extract chromosome sizes to replace FASTA format genome sequences, see following command
+system(paste0("samtools faidx ", refGenome))
+system(paste0("cut -f1,2 ", refGenome, ".fai > genome.size"))
+cmrMat <- CMRCalling(CMR = "m6A", IPBAM = RIP.bam, inputBAM = input.bam, method = "SlidingWindow", mappedInput = 17472, mappedRIP = 20072, refGenome = "genome.size")
 # Save the results into working directory  
 write.table(cmrMat, file = "SlidingWindow_peaks.txt", sep = "\t", quote = F, row.names = F, col.names = F)  
 ```
