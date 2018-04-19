@@ -90,7 +90,7 @@ test.bam <- readMapping(alignment = "tophat", fq = fq,refGenome = referenceGenom
     ChIP-seq dataset using Bayesian hidden Markov model and Markov chain Monte
     Carlo algorithms.     
    **Summary:** Both “SlidingWindow” and “exomePeak” are sliding window-based method to detect significant enriched regions and perform well on CMR  prediction, while “MACS2” and “BayesPeak” are peak calling methods designed for ChIP-seq dataset, but “MACS2” can strictly control false positives, in contrast, BayePeak is weaker in controlling false positives. In addition, method “exomePeak”, “MeTPeak” and “MACS2” can accept biological replicates using statistical methods.
-* Peak calling using SlindingWindow ###
+* Peak calling using SlindingWindow
 ```R
 # Loading sample data for peak calling  
 input.bam <- system.file("extdata/chr1_input_test.bam", package = "PEA")     
@@ -99,9 +99,7 @@ refGenome <- system.file("extdata/chromosome1.fa", package = "PEA")
 GTF <- system.file("extdata/chromosome1.gtf", package = "PEA")      
 
 # Peak calling using sliding window-based method  
-cmrMat <- CMRCalling(CMR = "m6A", IPBAM = RIP.bam, inputBAM = input.bam,   
-method = "SlidingWindow", mappedInput = 17472,    
-mappedRIP = 20072, refGenome = refGenome)   
+cmrMat <- CMRCalling(CMR = "m6A", IPBAM = RIP.bam, inputBAM = input.bam, method = "SlidingWindow", mappedInput = 17472,   mappedRIP = 20072, refGenome = refGenome)   
 # Save the results into working directory  
 write.table(cmrMat, file = "SlidingWindow_peaks.txt", sep = "\t", quote = F, row.names = F, col.names = F)  
 ```
