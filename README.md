@@ -36,7 +36,7 @@ $ docker run hello-world
 --------------------------------
   For Mac OS X and Linux operating systems, open the terminal, for Windows operating system, open CMD. Typing the following command:
 ```bash
-# Pull PEA from Docker PEA  
+# Pull PEA from Docker Hub
 $ docker pull malab/pea 
 ```
 ## Quickly start ##
