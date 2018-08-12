@@ -246,6 +246,8 @@ enrichment <- CMRAnnotation(cmrMat = peaks, GTF = GTF, annotation = "GO", topNod
 ## How to access help ##
 * If users encounter any bugs or issues, feel free to leave a message at Github [issues](<https://github.com/cma2015/PEA/issues>). We will try our best to deal with all issues as soon as possible.
 * In addition, if any suggestions are available, feel free to contact: __Zhai Jingjing__ <zhaijingjing603@gmail.com> or ___Ma Chuang___ <chuangma2006@gmail.com>
+## How to cite ##
+Zhai J, Song J, Cheng Q, Tang Y, Ma C; PEA: an integrated R toolkit for plant epitranscriptome analysis. Bioinformatics, 2018, bty421, https://doi.org/10.1093/bioinformatics/bty421
 ## References ##
   * Chen, W.*, et al.* Identifying N6-methyladenosine sites in the Arabidopsis
    thaliana transcriptome. *Mol Genet Genomics* 2016;291(6):2225-2229.  
