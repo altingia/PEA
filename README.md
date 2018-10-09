@@ -263,3 +263,5 @@ Zhai J, Song J, Cheng Q, Tang Y, Ma C; PEA: an integrated R toolkit for plant ep
   * Zhou, Y.*, et al.* SRAMP: prediction of mammalian N6-methyladenosine (m6A)
    sites based on sequence-derived features. *Nucleic Acids Res*
    2016;44(10):e91.  
+## Citation
+Zhai, J., Song, J., Cheng, Q., Tang, Y., & Ma, C. [**PEA: an integrated R toolkit for plant epitranscriptome analysis.**](https://academic.oup.com/bioinformatics/advance-article-abstract/doi/10.1093/bioinformatics/bty421/5021690?redirectedFrom=fulltext) Bioinformatics, 2018.
